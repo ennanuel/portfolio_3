@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio 3.0</title>
+  </head>
+  <body>
+    <svg class="pointer-events-none absolute cursor-none">
+      <filter id="grainy" class="">
+        <feTurbulence type="turbulence" baseFrequency="0.5"></feTurbulence>
+        <feColorMatrix type="saturate" values="0"></feColorMatrix>
+      </filter>
+    </svg>
+    <div id="root" class="relative"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

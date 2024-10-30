@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: 'DM Sans';
+    src: local('DMSans'), url('/fonts/DMSans.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: lighter;
+    src: local('Helvetica-light'), url('/fonts/Helvetica-light.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Helvetica'), url('/fonts/Helvetica.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Helvetica-Bold'), url('/fonts/Helvetica-Bold.ttf') format('ttf');
+}
+
+@font-face {
+    font-family: 'Montreal';
+    font-style: normal;
+    font-weight: 100;
+    src: local('Montreal-Thin'), url('/fonts/Montreal-Thin.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'Montreal';
+    font-style: normal;
+    font-weight: lighter;
+    src: local('Montreal-Light'), url('/fonts/Montreal-Light.otf') format('otf');
+}
+
+@font-face {
+    font-family: 'Montreal';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Montreal Regular'), url('/fonts/Montreal-Regular.woff') format('woff');
+}
+
+
+@font-face {
+    font-family: 'Montreal';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Montreal Bold'), url('/fonts/Montreal-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: normal;
+    src: local('OV Soge Regular'), url('/fonts/OVSoge-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: thin;
+    src: local('OV Soge Thin'), url('/fonts/OVSoge-Thin.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: 100;
+    src: local('OV Soge Extra Light'), url('/fonts/OVSoge-ExtraLight.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: 200;
+    src: local('OV Soge Light'), url('/fonts/OVSoge-Light.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: 400;
+    src: local('OV Soge Medium'), url('/fonts/OVSoge-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: 500;
+    src: local('OV Soge Semi Bold'), url('/fonts/OVSoge-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: bold;
+    src: local('OV Soge Bold'), url('/fonts/OVSoge-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: 700;
+    src: local('OV Soge Extra Bold'), url('/fonts/OVSoge-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'OV Soge';
+    font-style: normal;
+    font-weight: 900;
+    src: local('OV Soge Black'), url('/fonts/OVSoge-Black.woff') format('woff');
+}
+
+.grainy-bg {
+    background:
+        linear-gradient(to bottom, rgb(54, 54, 73), transparent),
+        url(./assets/noise_lg.svg);
+}
+
+#root::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: .5;
+    pointer-events: none;
+    z-index: 999999;
+    color: #aeae9d;
+    filter: url(#grainy);
+    opacity: 20%;
+}
+
+.outline-text {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    color: transparent;
+}
+
+.outline-text-dark {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    color: transparent;
+}
+
+
+
+.title {
+    @apply relative text-black-10 uppercase text-4xl font-bold font-ov-soge;
+    -webkit-text-stroke-color: #d7d5d5;
+    -webkit-text-stroke-width: 1px;
+}
+
+.title:after {
+    content: var(--content);
+    content: "What I offer";
+    @apply absolute top-0 left-0 w-full h-full text-transparent uppercase text-4xl font-bold font-ov-soge;
+    -webkit-text-stroke-color: #d7d5d5;
+    -webkit-text-stroke-width: 1px;
+}
