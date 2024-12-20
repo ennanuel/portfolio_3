@@ -158,14 +158,83 @@
 
 
 .title {
-    @apply relative text-black-10 text-4xl font-bold font-ov-soge;
-    -webkit-text-stroke-color: #d7d5d5;
+    @apply relative text-brown-200 text-2xl sm:text-3xl md:text-4xl font-bold font-ov-soge;
+    -webkit-text-stroke-color: #ede4d8;
     -webkit-text-stroke-width: 1px;
 }
 
 .title:after {
     content: var(--content);
-    @apply absolute z-10 top-0 left-0 w-full h-full text-transparent text-4xl font-bold font-ov-soge;
-    -webkit-text-stroke-color: #d7d5d5;
+    @apply absolute z-10 top-0 left-0 w-full h-full text-transparent text-2xl sm:text-3xl md:text-4xl font-bold font-ov-soge;
+    -webkit-text-stroke-color: #ede4d8;
     -webkit-text-stroke-width: 1px;
+}
+
+#home-layout {
+    @apply grid gap-4;
+    grid-template-rows: auto repeat(1, 1fr) auto;
+    grid-template-columns: 360px repeat(3, 1fr) auto;
+    grid-template-areas:
+        "logo name name name links"
+        "image details details details details"
+        "image socials socials socials socials";
+}
+
+@media (max-width: 1048px) {
+    #home-layout {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr repeat(3, auto);
+        grid-template-areas: 
+            "logo links"
+            "name name"
+            "details image"
+            "socials image";
+    }
+}
+
+@media (max-width: 768px) {
+    #home-layout {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr repeat(3, auto);
+        grid-template-areas: 
+            "logo links"
+            "name name"
+            "details details"
+            "image socials";
+    }
+}
+
+@media (max-height: 800px) {
+    #home-layout {
+        grid-template-columns: 1fr auto;
+        grid-template-rows: 1fr repeat(2, auto);
+        grid-template-areas: 
+            "logo links"
+            "name details"
+            "socials image";
+        }
+}
+
+.logo {
+    grid-area: logo;
+}
+
+.name {
+    grid-area: name;
+}
+
+.image {
+    grid-area: image;
+}
+
+.details {
+    grid-area: details;
+}
+
+.links {
+    grid-area: links;
+}
+
+.socials {
+    grid-area: socials
 }
