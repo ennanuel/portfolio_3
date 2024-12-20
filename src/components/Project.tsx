@@ -3,8 +3,20 @@
 import { motion } from "framer-motion";
 import { SetStateAction } from "react";
 
+type ProjectProps =  {
+    index: number; 
+    title: string; 
+    category: string; 
+    tags: string[]; 
+    image: string; 
+    video: string; 
+    demoLink: string; 
+    date: string; handleHover: () => void; 
+    handleMouseOut: () => void; 
+    setIndex: React.Dispatch<SetStateAction<number>> 
+};
 
-export default function Project({ index, title, category, tags, image, video, demoLink, date, setIndex, handleHover, handleMouseOut }: { index: number; title: string; category: string; tags: string[]; image: string; video: string; demoLink: string; date: string; handleHover: () => void; handleMouseOut: () => void; setIndex: React.Dispatch<SetStateAction<number>> }) {
+export default function Project({ index, title, category, tags, date, setIndex, handleHover, handleMouseOut }: ProjectProps) {
     return (
         <motion.li onMouseOver={handleHover} onMouseOut={handleMouseOut} className="md:min-h-screen mt-20 flex flex-col gap-8" onViewportEnter={() => setIndex(index)}>
             <div className="md:flex-1 aspect-square md:aspect-auto rounded-xl bg-brown-900"></div>
