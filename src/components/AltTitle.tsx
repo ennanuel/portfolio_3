@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 const ease = [.16, 1, .3, 1];
@@ -7,13 +7,9 @@ const ease = [.16, 1, .3, 1];
 export function AltTitle({ children, className }: { children: string; className?: string; }) {
     const ref = useRef<HTMLSpanElement>(null);
     const circleRef = useRef<HTMLSpanElement>(null);
-    const words = useMemo(() => children.split(' '), []);
+    const words = useMemo(() => children.split(' '), [children]);
     const [position, setPosition] = useState({ x: 0, y: 0 });
 
-    const [scrollPosition, setScrollPosition] = useState(0);
-    const isScrolling = useMemo<null | "upward" | "downward">(() => null, [scrollPosition]);
-
-    
     const handleMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
         if(!ref.current) return;
 
