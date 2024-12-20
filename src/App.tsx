@@ -1,8 +1,7 @@
-import { useState } from 'react';
-import { AiOutlineArrowDown, AiOutlineArrowRight, AiOutlineArrowUp } from 'react-icons/ai';
+
+import { AiOutlineArrowDown, AiOutlineArrowRight } from 'react-icons/ai';
 import { BsDot } from 'react-icons/bs';
-import { CgInsights } from 'react-icons/cg';
-import { FaExternalLinkAlt, FaFonticonsFi, FaGithub } from 'react-icons/fa';
+import { FaFonticonsFi, FaGithub } from 'react-icons/fa';
 import { FiExternalLink, FiGithub, FiInstagram, FiLinkedin, FiTwitter } from 'react-icons/fi';
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
 import { HiOutlineDocument } from 'react-icons/hi2';

@@ -158,15 +158,14 @@
 
 
 .title {
-    @apply relative text-black-10 uppercase text-4xl font-bold font-ov-soge;
+    @apply relative text-black-10 text-4xl font-bold font-ov-soge;
     -webkit-text-stroke-color: #d7d5d5;
     -webkit-text-stroke-width: 1px;
 }
 
 .title:after {
     content: var(--content);
-    content: "What I offer";
-    @apply absolute top-0 left-0 w-full h-full text-transparent uppercase text-4xl font-bold font-ov-soge;
+    @apply absolute z-10 top-0 left-0 w-full h-full text-transparent text-4xl font-bold font-ov-soge;
     -webkit-text-stroke-color: #d7d5d5;
     -webkit-text-stroke-width: 1px;
 }
