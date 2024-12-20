@@ -133,7 +133,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                     </motion.div>
                 </div>
                 <div className="links flex justify-end lg:justify-start">
-                    <ul className="lg:mr-20 flex flex-col items-start justify-start font-poppins tracking-tighter md:gap-2 text-left text-black-50 text-base">
+                    <ul className="lg:mr-20 flex flex-col flex-wrap items-start justify-start font-poppins tracking-tighter md:gap-2 text-left text-black-50 text-base">
                         {
                             MENUS.map((link, index) => (
                                 <motion.li 
@@ -154,7 +154,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                         }
                     </ul>
                 </div>
-                <div className="w-fit mt-6 lg:mt-0 image h-sm:hidden flex">
+                <div className="w-fit mt-6 lg:mt-0 image h-sm:hidden lg:hidden flex">
                     <motion.div 
                         transition={{ ease, duration: 2, delay: 0.5 }} 
                         initial={{ clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0'}} 

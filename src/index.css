@@ -171,13 +171,13 @@
 }
 
 #home-layout {
-    @apply grid gap-4;
-    grid-template-rows: auto repeat(1, 1fr) auto;
-    grid-template-columns: 360px repeat(3, 1fr) auto;
-    grid-template-areas:
-        "logo name name name links"
-        "image details details details details"
-        "image socials socials socials socials";
+    @apply grid gap-4 justify-between;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr repeat(2, auto);
+    grid-template-areas: 
+        "logo links"
+        "name details"
+        "socials image";
 }
 
 @media (max-width: 1048px) {
@@ -206,13 +206,14 @@
 
 @media (max-height: 800px) {
     #home-layout {
-        grid-template-columns: 1fr auto;
+        @apply justify-between gap-x-10;
         grid-template-rows: 1fr repeat(2, auto);
-        grid-template-areas: 
-            "logo links"
-            "name details"
-            "socials image";
-        }
+        grid-template-columns: 1fr auto auto;
+        grid-template-areas:
+            "logo links others"
+            "name details details"
+            "socials details details";
+    }
 }
 
 .logo {
