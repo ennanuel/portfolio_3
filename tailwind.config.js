@@ -3,6 +3,14 @@ export default {
   content: ["./src/**/*.{html,js,ts,tsx,css}", "./concept/**/*.{html,js,css}"],
   theme: {
     extend: {
+      screens: {
+        'sm': '400px',
+        'md': '768px',
+        'lg': '1048px',
+        'h-sm': {
+          raw: '(max-height: 800px)'
+        }
+      },
       fontSize: {
         'xs': '0.56rem',
         'sm': '0.75rem',
@@ -16,15 +24,29 @@ export default {
       },
       colors: {
         primary: "#c90604",
-        secondary: "#d2d2d0",
+        secondary: "#e2e2e0",
+        orange: "rgb(255,159,0)",
+        dark: "rgb(18,18,18)",
+        light: "rgb(239,239,236)",
         black: {
-          '100': "#0d0a0a",
-          '90': "#1a1717",
-          '75': "#403939",
-          '50': "#807575",
-          '25': "#bfafaf",
-          '10': "#d7d5d5"
-        }
+          10: "#d0d0d0",
+          25: "#a0a0a0",
+          50: "#717171",
+          75: "#414141",
+          90: "#121212",
+          100: "#0e0e0e"
+        },
+        brown: {
+            100: "#f6f1ec",
+            200: "#ede4d8",
+            300: "#e3d6c5",
+            400: "#dac9b1",
+            500: "#d1bb9e",
+            600: "#a7967e",
+            700: "#7d705f",
+            800: "#544b3f",
+            900: "#2a2520"
+        },
       },
       fontFamily: {
         'dm-sans': 'DM Sans',
@@ -46,6 +68,9 @@ export default {
         '800': '800',
         '900': '900'
       },
+      transitionTimingFunction: {
+        'expo': 'cubic-bezier(.16,1,.3,1)'
+      }
     },
   },
   plugins: [],
