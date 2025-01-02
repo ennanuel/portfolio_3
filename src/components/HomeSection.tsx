@@ -80,7 +80,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                     ease
                 }}
                 id="home-layout"
-                className="bg-light sticky top-0 z-[1] px-6 md:px-10 py-6 h-svh"
+                className="bg-light sticky top-0 z-[1] px-4 sm:px-6 md:px-10 py-6 h-svh"
                 onViewportEnter={() => setShowHeader(false)}
                 onViewportLeave={() => setShowHeader(true)}
             >
@@ -122,7 +122,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                                 ))
                             }
                         </motion.h1>
-                        <h3 className="text-lg md:text-xl font-medium font-ov-soge text-black-75 overflow-hidden">
+                        <h3 className="text-base sm:text-lg md:text-xl font-medium font-ov-soge text-black-75 overflow-hidden">
                             <motion.span 
                                 className="block" 
                                 initial={{ opacity: 0 }} 
@@ -183,7 +183,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                             <MdOutlineArrowOutward size={40} />
                         </motion.span>
                         <div className="flex-1 w-fit flex flex-col gap-6 md:gap-10">
-                            <p className="text-base w-full max-w-[320px] md:text-[1.2rem] leading-[1.6rem] md:leading-[1.8rem] font-poppins tracking-tighter text-black-50">
+                            <p className="text-[.9rem] sm:text-base w-full max-w-[320px] md:text-[1.2rem] leading-[1.4rem] sm:leading-[1.6rem] md:leading-[1.8rem] font-poppins tracking-tighter text-black-50">
                                 {
                                     DESCRIPTION
                                         .split(" ")
@@ -212,8 +212,8 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                         </div>
                     </motion.div>
                 </div>
-                <div className="socials flex items-end">
-                    <ul className="flex h-fit flex-wrap justify-end md:justify-start items-end lg:items-center lg:gap-6">
+                <div className="socials flex items-end w-full">
+                    <ul className="flex h-fit w-full flex-wrap flex-start sm:justify-end md:justify-start items-end lg:items-center lg:gap-6">
                         {
                             ["Github", "LinkedIn", "Instagram", "Twitter"].map((item, index) => (
                                 <li key={index} className="overflow-hidden text-black-50 uppercase text-sm md:text-base font-mono">
