@@ -17,7 +17,7 @@ export default function SubTitle({ children, title, className, paragraphClass, a
                 transition={{ ease, duration: 1.5, }} 
                 className={`${className} relative block whitespace-nowrap w-max before:absolute before:-bottom-1 before:left-0 before:w-[80%] before:h-[2px] ${alt ? 'text-brown-600 before:bg-brown-600' : 'text-brown-700 before:bg-brown-700'} text-sm font-ov-soge uppercase`}
             >{title}</motion.span>
-            <p className={`mb-20 relative w-full ${paragraphClass ? paragraphClass : 'max-w-[400px] text-base md:text-[1.2rem] leading-[1.2rem] md:leading-[1.6rem] font-poppins tracking-tighter text-black-50'}`}>
+            <p className={`mb-20 relative w-full ${paragraphClass ? paragraphClass : 'max-w-[400px] text-[.9rem] sm:text-base md:text-[1.2rem] leading-[1rem] sm:leading-[1.2rem] md:leading-[1.6rem] font-poppins tracking-tighter text-black-50'}`}>
                 {
                     words.map((word, index) => (
                         word.includes('\\br') ?
