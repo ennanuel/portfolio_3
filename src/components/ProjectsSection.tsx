@@ -8,7 +8,7 @@ import Projects from "./Projects"
 export default function ProjectSection() {
 
     return (
-        <section className="min-h-screen relative z-[4] bg-dark text-brown-200 flex flex-col px-6 md:px-10 py-20">
+        <section className="min-h-screen relative z-[4] bg-dark text-brown-200 flex flex-col px-4 sm:px-6 md:px-10 py-20">
             <div className="flex flex-col gap-12">
                 <div className="flex gap-6">
                     <Title>Selected works</Title>
