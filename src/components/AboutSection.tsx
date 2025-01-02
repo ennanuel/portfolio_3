@@ -47,7 +47,7 @@ export default function AboutSection() {
             <motion.section style={{ scale, translateY }} ref={containerRef} className="relative z-[7] min-h-screen flex flex-col px-6 md:px-10 p-10 bg-dark text-brown-200 rounded-b-[30px]">
                 <AltTitle>Designer &-Developer</AltTitle>
                 <div ref={boxRef} className="h-[200vh] flex flex-col justify-between gap-20 mb-20">
-                    <span  className="sticky top-0 font-poppins text-2xl md:text-3xl lg:text-4xl font-medium tracking-tighter leading-[3rem] md:leading-[4.1rem] lg:leading-[5.1rem] pt-[120px]">
+                    <span  className="sticky top-0 font-poppins text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium tracking-tighter leading-[2.6rem] sm:leading-[3rem] md:leading-[4.1rem] lg:leading-[5.1rem] pt-[120px]">
                         {
                             sub_title
                                 .split(" ")
