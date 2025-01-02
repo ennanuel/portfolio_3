@@ -136,7 +136,7 @@ export default function Projects() {
                 }
             </ul>
             
-            <div className="fixed top-0 left-0">
+            <div className="hidden lg:block fixed top-0 left-0">
                 <motion.div
                     animate={{ x: mousePosition.x + 10, y: mousePosition.y + 10, opacity: hoveringOverProject ? 1 : 0, scale: hoveringOverProject ? 1 : 0 }}
                     transition={{ ease, duration: .5 }}
