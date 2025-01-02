@@ -49,7 +49,7 @@ export default function Header({ handleModalClick, menuIsOpen }: { handleModalCl
                                 <li 
                                     key={index} 
                                     style={{ '--delay': `${(index + 3) * 100}ms`} as React.CSSProperties} 
-                                    className="group overflow-hidden font-bold font-ov-soge text-3xl leading-[4rem] uppercase w-fit"
+                                    className="group overflow-hidden font-bold font-ov-soge text-xl md:text-2xl lg:text-3xl leading-[3rem] md:leading-[3.5rem] lg:leading-[4rem] uppercase w-fit"
                                 >
                                     <span className={`${menuIsOpen ? 'delay-[var(--delay)]' : 'translate-y-full'} flex items-center justify-center w-fit transition-transform duration-1000 ease-expo`}>
                                         <span className="flex items-center justify-center -translate-x-10 group-hover:translate-x-0 transition-transform duration-500 ease-expo">
@@ -75,7 +75,7 @@ export default function Header({ handleModalClick, menuIsOpen }: { handleModalCl
                                     style={{ '--delay': `${(index + 5) * 100}ms` } as React.CSSProperties}
                                     className={`${menuIsOpen ? 'delay-[var(--delay)]' : 'opacity-0'} list-none transition-opacity duration-1000 ease-expo`}
                                 >
-                                    <Button text={item} className="font-mono uppercase px-4 min-h-[36px] rounded-md border border-brown-600 text-brown-500"></Button>
+                                    <Button text={item} className="font-mono uppercase text-sm sm:text-base px-4 min-h-[36px] rounded-md border border-brown-600 text-brown-500"></Button>
                                 </li>
                             ))
                         }
