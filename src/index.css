@@ -200,11 +200,11 @@
             "logo links"
             "name name"
             "details details"
-            "image socials";
+            "socials socials";
     }
 }
 
-@media (max-height: 800px) {
+@media (max-height: 800px) and (min-width: 1020px) {
     #home-layout {
         @apply justify-between gap-x-10;
         grid-template-rows: 1fr repeat(2, auto);
