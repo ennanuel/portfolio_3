@@ -8,7 +8,7 @@ export function Title({ children, className }: { children: string; className?: s
     const words = useMemo(() => children.split(' '), []);
 
     return (
-        <span className={`${className} font-ov-soge font-bold text-2xl md:text-4xl leading-[3.2rem] md:leading-[5.61rem]`}>
+        <span className={`${className} font-ov-soge font-bold text-xl sm:text-2xl md:text-4xl leading-[2.5rem] sm:leading-[3.2rem] md:leading-[5.61rem]`}>
             {
                 words.map((word, index) => (
                     <span className="inline-flex overflow-hidden" key={index}>
