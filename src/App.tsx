@@ -51,7 +51,7 @@ export default function App() {
 
     return (
         <div className="">
-            <header className={`${showHeader || menuIsOpen ? '' : 'pointer-events-none'} fixed z-[999999] top-0 right-0 py-8 px-8 flex gap-2 md:gap-[12px] justify-end items-center`}>
+            <header className={`${showHeader || menuIsOpen ? '' : 'pointer-events-none'} fixed z-[999999] top-0 right-0 py-4 sm:py-8 px-4 sm:px-8 flex gap-2 md:gap-[12px] justify-end items-center`}>
                 <span className={`${menuIsOpen ? 'before:opacity-50 after:opacity-100 after:delay-[400ms] before:delay-[450ms] before:duration-1000 after:duration-1000' : 'before:opacity-0 after:opacity-0 opacity-0'} pointer-events-none transition-opacity w-[400px] md:w-[440px] aspect-square absolute top-[-160px] right-[-200px] before:absolute before:top-12 before:left-8 before:w-full before:h-full before:rounded-full before:bg-brown-700 before:transition-opacity after:absolute after:top-0 after:left-0 after:w-full after:h-full after:rounded-full after:bg-brown-700 after:transition-opacity`}></span>
                 <div className={`${menuIsOpen || showHeader ? '' : 'scale-0 opacity-0'} transition-[transform,_opacity] duration-500 ease-expo`}>
                     <Button text="Let's Talk" Icon={BsArrowRight}></Button>
