@@ -97,7 +97,7 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                     </div>
                     <div className="relative">
                         <AnimatePresence mode="wait" initial={false}>
-                            <motion.div key={id} className="flex gap-2 justify-center md:justify-start">
+                            <motion.div key={id} className="flex flex-wrap gap-2 justify-center md:justify-start">
                                 {
                                     tags.map((tag, index) => (
                                         <span key={index} className="block overflow-hidden">
@@ -107,7 +107,7 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                                                 initial={{ y: '100%' }}
                                                 animate={{ y: 0 }}
                                                 exit={{ y: '-100%' }}
-                                                className="flex items-center justify-center h-[30px] px-3 font-mono uppercase text-black-50 border border-black-50 rounded-md"
+                                                className="flex items-center justify-center h-[30px] px-3 font-mono whitespace-nowrap uppercase text-black-50 border border-black-50 rounded-md"
                                             >{tag}</motion.span>
                                         </span>
                                     ))
