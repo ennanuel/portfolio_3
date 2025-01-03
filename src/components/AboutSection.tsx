@@ -43,7 +43,7 @@ export default function AboutSection() {
 
 
     return (
-        <div className="bg-light">
+        <div id="about" className="bg-light">
             <motion.section style={{ scale, translateY }} ref={containerRef} className="relative z-[7] min-h-screen flex flex-col px-6 md:px-10 p-10 bg-dark text-brown-200 rounded-b-[30px]">
                 <AltTitle>Designer &-Developer</AltTitle>
                 <div ref={boxRef} className="h-[200vh] flex flex-col justify-between gap-20 mb-20">
