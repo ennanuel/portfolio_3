@@ -19,13 +19,19 @@ const getPages = ( maxLength: number ) => {
 export default function Testimonial({ testimonial, name, role, company, tags, image, maxLength, index, setIndex }: { testimonial: string; name: string; role: string; company: string; tags: string[]; image: string; maxLength: number, index: number; setIndex: React.Dispatch<React.SetStateAction<number>> }) {
     const words = useMemo(() => testimonial.split(' '), [testimonial]);
 
-    const next = () => setIndex(index < (maxLength - 1) ? index + 1 : 0);
-    const prev = () => setIndex(index > 0 ? index - 1 : maxLength - 1);
+    const next = () => {
+        location.href = '#testimonial';
+        setIndex(index < (maxLength - 1) ? index + 1 : 0);
+    }
+    const prev = () => {
+        location.href = "#testimonial";
+        setIndex(index > 0 ? index - 1 : maxLength - 1);
+    }
     
     const id = useMemo(() => generateId(), [index])
 
     return (
-        <div className="flex flex-col md:flex-row gap-10 mt-20 px-6 md:px-10">
+        <div id="testimonial" className="flex flex-col md:flex-row gap-10 mt-20 px-6 md:px-10">
             <div className="relative flex-1 aspect-square md:aspect-[1.1]">
                 <div className="absolute w-full h-full top-0 left-0 bg-black-75 rounded-full md:rounded-md">
                     <AnimatePresence>
@@ -130,8 +136,12 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                         <span>{maxLength}</span>
                     </div>
                     <div className="flex sticky md:bottom-10 items-center gap-4">
-                        <Button toLeft text="prev" onClick={prev} Icon={MdArrowBack} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-full sm:rounded-md"></Button>
-                        <Button text="next" onClick={next} Icon={MdArrowForward} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-full sm:rounded-md"></Button>
+                        <span className="relative">
+                            <Button toLeft text="prev" onClick={prev} Icon={MdArrowBack} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-full sm:rounded-md"></Button>
+                        </span>
+                        <span className="relative block">
+                            <Button text="next" onClick={next} Icon={MdArrowForward} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-full sm:rounded-md"></Button>
+                        </span>
                     </div>
                 </div>
             </div>
