@@ -34,20 +34,20 @@ export default function ContactSection() {
                     </span>
                 </div>
                 <div className="flex flex-col gap-16">
-                    <Button text="Book a Call" Icon={BsArrowRight} size={24} className="font-ov-soge uppercase text-lg px-8 py-6 rounded-md bg-brown-800 text-brown-400 w-fit"></Button>
+                    <Button text="Book a Call" Icon={BsArrowRight} size={24} className="font-ov-soge uppercase text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-md bg-brown-800 text-brown-400 w-fit"></Button>
                     <div className="flex flex-wrap justify-between gap-6 md:gap-20">
                         <div className="flex flex-col">
-                            <span className="font-ov-soge font-medium text-brown-700">For further enquires</span>
-                            <div className="flex items-center gap-2 text-brown-600">
+                            <span className="text-sm md:text-base font-ov-soge font-medium text-brown-700">For further enquires</span>
+                            <div className="text-sm md:text-base flex items-center gap-2 text-brown-600">
                                 <MdOutlineArrowOutward size={16} />
                                 <span className="font-mono truncate">ezemaemmanuelezema6@gmail.com</span>
                             </div>
                         </div>
-                        <div className="flex border border-brown-700 rounded-md h-[60px]">
+                        <div className="flex border border-brown-700 rounded-md h-14">
                             <div className="h-full aspect-square"></div>
                             <div className="border-l border-brown-700 flex flex-col">
-                                <span className="flex-1 px-3 flex items-center border-b border-brown-700 font-mono text-brown-600">Working Globally</span>
-                                <span className="flex-1 px-3 flex items-center font-mono text-brown-600">Available Oct' 24</span>
+                                <span className="flex-1 px-3 flex items-center border-b border-brown-700 font-mono text-brown-600 text-sm md:text-base">Working Globally</span>
+                                <span className="flex-1 px-3 flex items-center font-mono text-brown-600 text-sm md:text-base">Available Oct' 24</span>
                             </div>
                         </div>
                     </div>
