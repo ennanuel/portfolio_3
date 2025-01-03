@@ -11,7 +11,7 @@ const ease = [0.16, 1, 0.3, 1];
 export default function ContactSection() {
 
     return (
-        <section id="#contact" className="relative z-[7] min-h-screen bg-light flex p-4 md:p-12">
+        <section id="contact" className="relative z-[7] min-h-screen bg-light flex p-4 md:p-12">
             <div className="flex-1 rounded-md bg-dark text-brown-200 flex flex-col justify-between gap-12 px-4 py-6 md:py-8 md:px-8">
                 <div className="flex flex-col gap-10">
                     <span className="relative block w-max before:absolute before:-bottom-1 before:left-0 before:w-[80%] before:h-[2px] before:bg-brown-800 text-brown-800 uppercase font-ov-soge text-sm">Contact me</span>
