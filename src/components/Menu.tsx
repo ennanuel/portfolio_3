@@ -43,7 +43,7 @@ export default function Header({ handleModalClick, menuIsOpen }: { handleModalCl
                     }
                 </AnimatePresence>
                 <nav className="">
-                    <ul className="flex flex-col gap-1 gap-2">
+                    <ul className="flex flex-col gap-1 sm:gap-2">
                         {
                             ["Home", "Services", "Projects", "About", "Testimonials", "Contact"].map((item, index) => (
                                 <li 
