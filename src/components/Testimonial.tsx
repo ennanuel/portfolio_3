@@ -130,8 +130,8 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                         <span>{maxLength}</span>
                     </div>
                     <div className="flex sticky md:bottom-10 items-center gap-4">
-                        <Button toLeft text="prev" onClick={prev} Icon={MdArrowBack} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-md"></Button>
-                        <Button text="next" onClick={next} Icon={MdArrowForward} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-md"></Button>
+                        <Button toLeft text="prev" onClick={prev} Icon={MdArrowBack} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-full sm:rounded-md"></Button>
+                        <Button text="next" onClick={next} Icon={MdArrowForward} className="uppercase font-ov-soge px-4 min-h-[40px] py-3 bg-brown-800 text-brown-400 rounded-full sm:rounded-md"></Button>
                     </div>
                 </div>
             </div>
