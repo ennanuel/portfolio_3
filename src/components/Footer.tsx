@@ -54,7 +54,7 @@ const SOCIALS = [
 
 export default function Footer() {
     const containerRef = useRef<HTMLDivElement>(null);
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const anchorRef = useRef<HTMLAnchorElement>(null);
 
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -64,10 +64,10 @@ export default function Footer() {
     const scale = useTransform(scrollYProgress, [0, 1], [0.9, 1]);
     const translateY = useTransform(scrollYProgress, [0, 1], [50, 0]);
 
-    const handleMouseMove: React.MouseEventHandler<HTMLButtonElement> = (event) => {
-        if(!buttonRef.current) return;
+    const handleMouseMove: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+        if(!anchorRef.current) return;
 
-        const rect = buttonRef.current.getBoundingClientRect();
+        const rect = anchorRef.current.getBoundingClientRect();
         const x = event.clientX - (rect.left + (rect.width / 4));
         const y = event.clientY - (rect.top + (rect.height / 4));
 
@@ -76,8 +76,8 @@ export default function Footer() {
     const handleMouseOut = () => setMousePosition({ x: 0, y: 0 });
 
     return (
-        <div ref={containerRef} className="mt-[-100vh] bg-light">
-            <div className="h-svh"></div>
+        <div ref={containerRef} className="mt-[-100dvh] bg-light">
+            <div className="h-[100dvh]"></div>
             <motion.footer style={{ opacity: scrollYProgress, y: translateY, scale }} className="overflow-clip z-[2] w-full sticky bottom-0 p-4 md:p-8 flex flex-col gap-20 justify-between">
                 <div className="flex gap-8">
                     <span className="flex-1 md:flex-[3] flex items-center font-ov-soge font-bold text-base md:text-lg h-[40px] border-b border-black-25 text-black-90">ezema.dev</span>
@@ -112,14 +112,15 @@ export default function Footer() {
                         animate={{ x: mousePosition.x, y: mousePosition.y }} 
                         className="transition-transform ease-expo duration-500"
                     >
-                        <button 
-                            ref={buttonRef}
+                        <a 
+                            ref={anchorRef}
                             onMouseMove={handleMouseMove} 
                             onMouseOut={handleMouseOut}
+                            href="/#"
                             className="relative w-20 aspect-square text-brown-800 mb-4 mr-4 flex items-center justify-center before:absolute before:w-full before:h-full before:bg-brown-300 before:ease-expo before:duration-500 before:rounded-full before:transition-transform hover:before:scale-[1.4]"
                         >
                             <MdArrowUpward size={30} className="relative" />
-                        </button>
+                        </a>
                     </motion.div>
                 </div>
             </motion.footer>
