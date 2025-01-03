@@ -46,7 +46,10 @@ export default function App() {
         }
         
         requestAnimationFrame(raf);
-        window.scrollY = 0;
+    }, []);
+
+    useEffect(() => {
+        setTimeout(() => window.scrollTo(0, 0), 0);
     }, [])
 
     return (
