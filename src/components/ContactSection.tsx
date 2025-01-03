@@ -34,7 +34,7 @@ export default function ContactSection() {
                     </span>
                 </div>
                 <div className="flex flex-col gap-16">
-                    <Button text="Book a Call" Icon={BsArrowRight} size={24} className="font-ov-soge uppercase text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-md bg-brown-800 text-brown-400 w-fit"></Button>
+                    <Button text="Book a Call" Icon={BsArrowRight} size={24} className="font-ov-soge uppercase text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full sm:rounded-md bg-brown-800 text-brown-400 w-fit"></Button>
                     <div className="flex flex-wrap justify-between gap-6 md:gap-20">
                         <div className="flex flex-col">
                             <span className="text-sm md:text-base font-ov-soge font-medium text-brown-700">For further enquires</span>
