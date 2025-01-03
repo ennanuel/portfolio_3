@@ -54,7 +54,7 @@ export default function ServicesSection() {
     }, [])
 
     return (
-        <section className="relative z-[3] bg-dark rounded-t-[30px] text-brown-200 min-h-screen md:px-10 flex-col lg:flex-row flex gap-20 md:pb-[160px]">
+        <section id="services" className="relative z-[3] bg-dark rounded-t-[30px] text-brown-200 min-h-screen md:px-10 flex-col lg:flex-row flex gap-20 md:pb-[160px]">
             <div className="sticky flex-1 lg:top-0 z-[20] lg:h-screen flex flex-col gap-10 mt-20 px-4 sm:px-6 lg:mt-0 lg:py-20 lg:pt-[124px] mb-[-20vh]">
                 <Title className="font-ov-soge font-bold">Your Success, My Goal</Title>
                 <SubTitle title="Services">
