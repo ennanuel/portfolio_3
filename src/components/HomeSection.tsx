@@ -66,7 +66,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
 
 
     return (
-        <div ref={containerRef} className="mb-[-100vh] bg-black-100">
+        <div id="intro" ref={containerRef} className="mb-[-100dvh] bg-black-100">
             <motion.div
                 initial={{
                     clipPath: 'ellipse(40% 20% at 50% 120%)'
@@ -80,7 +80,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                     ease
                 }}
                 id="home-layout"
-                className="bg-light sticky top-0 z-[1] px-4 sm:px-6 md:px-10 py-6 h-svh"
+                className="bg-light sticky top-0 z-[1] px-4 sm:px-6 md:px-10 py-6 h-[100dvh]"
                 onViewportEnter={() => setShowHeader(false)}
                 onViewportLeave={() => setShowHeader(true)}
             >
