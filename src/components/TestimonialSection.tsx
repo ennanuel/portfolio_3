@@ -34,7 +34,7 @@ export default function TestimonialSection() {
     const testimonial = useMemo(() => TESTIMONIALS[index], [index]);
 
     return (
-        <section className="relative z-[6] mt-[-200px] min-h-screen bg-light flex flex-col md:gap-10 pt-20 pb-[160px]">
+        <section id="testimonials" className="relative z-[6] mt-[-200px] min-h-screen bg-light flex flex-col md:gap-10 pt-20 pb-[160px]">
             <div className="px-6 md:px-12">                    
                 <div className="flex flex-col gap-16 lg:max-w-[50%]">
                     <Title className="text-black-100">What my clients have to say</Title>
