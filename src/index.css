@@ -126,6 +126,11 @@
     background:
         linear-gradient(to bottom, rgb(54, 54, 73), transparent),
         url(./assets/noise_lg.svg);
+};
+
+html, 
+* {
+    scroll-behavior: smooth !important;
 }
 
 #root::after {
