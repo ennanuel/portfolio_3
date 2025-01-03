@@ -27,7 +27,7 @@ export default function Header({ handleModalClick, menuIsOpen }: { handleModalCl
 
     return (
         <dialog onClick={handleModalClick} className={`${menuIsOpen ? '' : 'opacity-0 pointer-events-none'} flex justify-end transition-opacity overflow-clip fixed z-[99999] top-0 left-0 m-0 p-0 w-screen h-screen bg-black-100/30`}>
-            <div id="menu-modal" className={`${menuIsOpen ? 'delay-100' : 'translate-x-[calc(100%_+_100px)] delay-300'} relative ease-expo duration-[2s] transition-transform w-full lg:w-1/2 h-full rounded-b-md bg-brown-800 px-6 md:px-16 pt-[160px] md:pt-20 py-20 pb-16 text-light flex flex-col justify-between gap-12`}>
+            <div id="menu-modal" className={`${menuIsOpen ? 'delay-100' : 'translate-x-[calc(100%_+_100px)] delay-300'} relative ease-expo duration-[2s] transition-transform w-full lg:w-1/2 h-full rounded-b-md bg-brown-800 px-6 md:px-16 sm:pt-[160px] md:pt-20 py-20 pb-16 text-light flex flex-col justify-between gap-12`}>
                 <AnimatePresence>
                     {
                         menuIsOpen &&
