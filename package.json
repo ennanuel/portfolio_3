@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@calcom/embed-react": "^1.5.1",
+    "@calcom/embed-react": "^1.5.2",
     "@types/uuid": "^10.0.0",
     "framer-motion": "^11.11.11",
     "lenis": "^1.1.16",
