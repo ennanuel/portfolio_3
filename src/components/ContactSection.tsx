@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 import { MdOutlineArrowOutward } from "react-icons/md";
 import Button from "./Button";
-import { BsArrowRight } from "react-icons/bs";
+import { BiMessageSquare } from "react-icons/bi";
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -34,12 +34,12 @@ export default function ContactSection() {
                     </span>
                 </div>
                 <div className="flex flex-col gap-16">
-                    <Button text="Book a Call" Icon={BsArrowRight} size={24} className="font-ov-soge uppercase text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full sm:rounded-md bg-brown-800 text-brown-400 w-fit"></Button>
+                    <Button text="Book a Call" namespace="30min" Icon={MdOutlineArrowOutward} size={24} className="font-ov-soge uppercase text-base md:text-lg px-6 sm:px-8 py-4 sm:py-6 rounded-full sm:rounded-md bg-brown-800 text-brown-400 w-fit"></Button>
                     <div className="flex flex-wrap justify-between gap-6 md:gap-20">
                         <div className="flex flex-col">
                             <span className="text-sm md:text-base font-ov-soge font-medium text-brown-700">For further enquires</span>
                             <div className="text-sm md:text-base flex items-center gap-2 text-brown-600">
-                                <MdOutlineArrowOutward size={16} />
+                                <BiMessageSquare size={16} />
                                 <span className="font-mono truncate">ezemaemmanuelezema6@gmail.com</span>
                             </div>
                         </div>
