@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { SetStateAction } from "react";
 
+import demo_video from "../assets/videos/demo_1.webm";
+import demo_image from "../assets/demo_image3.jpg"
+
 type ProjectProps =  {
     index: number; 
     title: string; 
@@ -19,9 +22,16 @@ type ProjectProps =  {
 export default function Project({ index, title, category, tags, date, setIndex, handleHover, handleMouseOut }: ProjectProps) {
     return (
         <motion.li onMouseOver={handleHover} onMouseOut={handleMouseOut} className="md:min-h-screen mt-20 flex flex-col gap-8" onViewportEnter={() => setIndex(index)}>
-            <div className="md:flex-1 aspect-square md:aspect-auto rounded-xl bg-brown-900"></div>
+            <div className="relative md:flex-1 aspect-square md:aspect-auto rounded-xl bg-brown-900 overflow-hidden">
+                <img src={demo_image} alt="project image" className="absolute top-0 left-0 w-full h-full object-cover" />
+                <div className="w-full h-full relative flex items-center justify-center p-4 md:p-10 lg:p-20 bg-black-100/10">
+                    <video muted autoPlay className="w-full max-w-[800px] h-auto rounded-t-xl">
+                        <source src={demo_video} />
+                    </video>
+                </div>
+            </div>
             <div className="span flex flex-col gap-2">
-                <span className="text-sm sm:text-basefont-mono text-brown-700">{category}</span>
+                <span className="text-sm sm:text-base font-mono text-brown-700">{category}</span>
                 <div className="flex flex-col gap-4">
                     <span className="text-lg sm:text-xl md:text-2xl font-ov-soge font-medium">{title}</span>
                     <div className="flex items-center gap-2 text-sm sm:text-base">
