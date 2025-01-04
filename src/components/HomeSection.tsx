@@ -206,7 +206,7 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                                     animate={{ y: 0 }} 
                                     className="overflow-hidden"
                                 >
-                                    <Button text="Let's Chat" Icon={BsArrowRight}></Button>
+                                    <Button text="Let's Talk" namespace="30min" Icon={BsArrowRight}></Button>
                                 </motion.div>
                             </div>
                         </div>
