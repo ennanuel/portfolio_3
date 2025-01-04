@@ -3,9 +3,18 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 
 
+type Props = { 
+    title: string; 
+    children: string; 
+    className?: string; 
+    paragraphClass?: string; 
+    alt?: boolean; 
+    duration?: number 
+};
+
 const ease = [.16, 1, .3, 1];
 
-export default function SubTitle({ children, title, className, paragraphClass, alt }: { title: string; children: string; className?: string; paragraphClass?: string; alt?: boolean; }) {
+export default function SubTitle({ children, title, className, paragraphClass, alt, duration }: Props) {
 
     const words = useMemo(() => children.split(' '), []);
 
@@ -24,7 +33,11 @@ export default function SubTitle({ children, title, className, paragraphClass, a
                         <br className="block" /> :
                         <span key={index} className="inline-block overflow-hidden">
                             <motion.span
-                                transition={{ ease, duration: 1.5, delay: 0.2 + (index / 20) }} 
+                                transition={{ 
+                                    ease, 
+                                    duration: duration ? duration : 1.5, 
+                                    delay: 0.2 + (index / 20) 
+                                }} 
                                 initial={{ y: '100%' }} 
                                 whileInView={{ y: 0 }}
                                 viewport={{ once: true }}
