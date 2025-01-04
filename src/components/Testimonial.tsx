@@ -7,6 +7,18 @@ import { AnimatePresence, motion } from "framer-motion";
 import { v4 as generateId } from "uuid";
 import Button from "./Button";
 
+type Props = { 
+    testimonial: string; 
+    name: string; 
+    role: string; 
+    company: string; 
+    tags: string[]; 
+    image: string; 
+    maxLength: number, 
+    index: number; 
+    setIndex: React.Dispatch<React.SetStateAction<number>> 
+}
+
 
 const ease = [.16, 1, .3, 1];
 
@@ -16,7 +28,7 @@ const getPages = ( maxLength: number ) => {
     return result;
 }
 
-export default function Testimonial({ testimonial, name, role, company, tags, image, maxLength, index, setIndex }: { testimonial: string; name: string; role: string; company: string; tags: string[]; image: string; maxLength: number, index: number; setIndex: React.Dispatch<React.SetStateAction<number>> }) {
+export default function Testimonial({ testimonial, name, role, company, tags, image, maxLength, index, setIndex }: Props) {
     const words = useMemo(() => testimonial.split(' '), [testimonial]);
 
     const next = () => {
