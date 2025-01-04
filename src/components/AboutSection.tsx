@@ -67,7 +67,7 @@ export default function AboutSection() {
                     </div>
 
                     <div className="flex flex-1">
-                        <SubTitle title="About me" paragraphClass="max-w-[400px] text-base font-poppins tracking-tighter text-black-50">                        
+                        <SubTitle title="About me" duration={.5} paragraphClass="max-w-[400px] text-base font-poppins tracking-tighter text-black-50">                        
                             Creating great web experiences is my primary focus. I ensure each project leaves users with a feel-good sensation through meticulous attention to detail and user-centric design principles. \\br \\br When I'm not immersed in web development and design, you can find me sharing insights about my freelance journey on YouTube, bouldering, playing music, or tending to my cherished houseplants.
                         </SubTitle>
                     </div>
