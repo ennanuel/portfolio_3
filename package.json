@@ -11,9 +11,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.4",
     "@calcom/embed-react": "^1.5.2",
     "@types/uuid": "^10.0.0",
     "framer-motion": "^11.11.11",
+    "graphql": "^16.10.0",
     "lenis": "^1.1.16",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
