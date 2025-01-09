@@ -8,6 +8,7 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 import image from "../assets/my_image.jpg";
 import Button from "./Button";
 import MenuLink from "./MenuLink";
+import { EzemaSocials } from "../types";
 
 const MY_NAME = 'Ezema Emmanuel';
 const DESCRIPTION = 'I craft exceptional web applications and websites that align with your brand identity and drive business growth.';
@@ -16,28 +17,28 @@ const ease = [.16, 1, .3, 1];
 
 const MENUS = [
     {
-        text: "Services",
-        href: "#services"
+        platform: "Services",
+        url_link: "#services"
     },
     {
-        text: "Works",
-        href: "#projects"
+        platform: "Works",
+        url_link: "#projects"
     },
     {
-        text: "About",
-        href: "#about"
+        platform: "About",
+        url_link: "#about"
     },
     {
-        text: "Testimonials",
-        href: "#testimonials"
+        platform: "Testimonials",
+        url_link: "#testimonials"
     },
     {
-        text: "Contact",
-        href: "#contact"
+        platform: "Contact",
+        url_link: "#contact"
     }
 ]
 
-export default function HomeSection({ setShowHeader }: { setShowHeader: React.Dispatch<React.SetStateAction<boolean>> }) {
+export default function HomeSection({ setShowHeader, socials }: { socials: EzemaSocials[]; setShowHeader: React.Dispatch<React.SetStateAction<boolean>> }) {
     const logoElementRef = useRef<HTMLElement>(null);
     const [{ x, y }, setPositions] = useState({ x: 0, y: 0 });
 
@@ -215,10 +216,10 @@ export default function HomeSection({ setShowHeader }: { setShowHeader: React.Di
                 <div className="socials flex items-end w-full">
                     <ul className="flex h-fit w-full flex-wrap flex-start sm:justify-end md:justify-start items-end lg:items-center lg:gap-6">
                         {
-                            ["Github", "LinkedIn", "Instagram", "Twitter"].map((item, index) => (
+                            socials.map(({ url_link, platform }, index) => (
                                 <li key={index} className="overflow-hidden text-black-50 uppercase text-sm md:text-base font-mono">
                                     <motion.span transition={{ ease, duration: 1.5, delay: 0.6 + (index / 10) }} initial={{ y: '100%' }} animate={{ y: 0 }} className="block">
-                                        <Button text={item} hoverTextClassName="text-brown-600" className="h-30px px-2 font-mono uppercase before:bg-brown-500/50"></Button>
+                                        <Button onClick={() => { location.href = url_link }} text={platform} hoverTextClassName="text-brown-600" className="h-30px px-2 font-mono uppercase before:bg-brown-500/50"></Button>
                                     </motion.span>
                                 </li>
                             ))
