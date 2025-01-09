@@ -15,6 +15,50 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import Menu from "./components/Menu";
 import Button from "./components/Button";
+import { gql, useQuery } from "@apollo/client";
+import { QueryResult } from "./types";
+
+
+
+const QUERY = gql`
+    query EzemaTestimonials {
+        ezemaProjects {
+            title
+            desc
+            demo_url
+            code_url
+            category
+            tags
+            image_public_id
+            image_url
+            video_public_id
+            video_url
+            createdAt
+        }
+        ezemaTestimonials {
+            id
+            verdict
+            services
+            client_name
+            client_role
+            client_company
+            client_image {
+                publicUrl
+            }
+        }
+        ezemaSocials(where: {
+            platform: {
+                not: {
+                    equals: "Email"
+                }
+            }
+        }) {
+            id
+            platform
+            url_link
+        }
+    }
+`;
 
 
 export default function App() {
@@ -32,7 +76,9 @@ export default function App() {
         const isWithinRect = event.clientX >= rect.left && event.clientX <= (rect.left + rect.width) && event.clientY >= rect.top && event.clientY <= (rect.top + rect.height);
 
         if(!isWithinRect) close();
-    }
+    };
+
+    const { loading, data } = useQuery<QueryResult>(QUERY);
 
     useEffect(() => {
         if (menuIsOpen) document.querySelector('body')?.classList?.add('overflow-hidden');
@@ -65,6 +111,8 @@ export default function App() {
         })();
     }, []);
 
+    if(loading) return <div className="bg-black-100 h-screen w-full"></div>
+
     return (
         <div className="">
             <header className={`${showHeader || menuIsOpen ? '' : 'pointer-events-none'} fixed z-[999999] top-0 right-0 py-4 sm:py-8 px-4 sm:px-8 flex gap-2 md:gap-[12px] justify-end items-center`}>
@@ -75,14 +123,14 @@ export default function App() {
                 <button onClick={menuIsOpen ? close : open} className={`${showHeader || menuIsOpen ? '' : 'scale-0'} relative w-12 md:w-[60px] aspect-square rounded-full md:rounded-md bg-brown-400 text-brown-900 flex items-center justify-center transition-transform duration-1000 ease-expo md:hover:scale-90 before:absolute before:top-[50%] before:left-1/2 before:translate-x-[-50%] before:h-[2px] before:w-1/2 before:bg-brown-900 before:transition-transform before:duration-300 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:h-[2px] after:w-1/2 after:bg-brown-900 after:transition-transform after:duration-300 ${menuIsOpen ? 'after:-rotate-45 after:-translate-y-1/2 before:rotate-45 before:-translate-y-1/2' : 'before:translate-y-[calc(-50%_+_5px)] after:translate-y-[calc(-50%_-_5px)]'}`}>
                 </button>
             </header> 
-            <Menu handleModalClick={handleModalClick} menuIsOpen={menuIsOpen} closeModal={close} />
-            <HomeSection setShowHeader={setShowHeader} />
+            <Menu handleModalClick={handleModalClick} menuIsOpen={menuIsOpen} closeModal={close} socials={data?.ezemaSocials || []} />
+            <HomeSection socials={data?.ezemaSocials || []} setShowHeader={setShowHeader} />
             <ServicesSection />
-            <ProjectsSection />
+            <ProjectsSection projects={data?.ezemaProjects || []} />
             <AboutSection />
-            <TestimonialSection />
+            <TestimonialSection testimonials={data?.ezemaTestimonials || []} />
             <ContactSection />
-            <Footer />
+            <Footer socials={data?.ezemaSocials || []} />
         </div>
     )
 }
