@@ -3,8 +3,16 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa6";
 import Button from "./Button";
+import { EzemaSocials } from "../types";
 
-export default function Header({ handleModalClick, menuIsOpen, closeModal }: { handleModalClick: React.MouseEventHandler<HTMLDialogElement>, menuIsOpen: boolean; closeModal: () => void }) {
+type Props = {
+    socials: EzemaSocials[];
+    handleModalClick: React.MouseEventHandler<HTMLDialogElement>,
+    menuIsOpen: boolean;
+    closeModal: () => void;
+}
+
+export default function Header({ handleModalClick, menuIsOpen, closeModal, socials }: Props) {
 
     const initialPath = `M100 0 L100 ${window.innerHeight} Q0 ${window.innerHeight/2} 100 0`;
     const finalPath = `M100 0 L100 ${window.innerHeight} Q100 ${window.innerHeight/2} 100 0`;
@@ -76,16 +84,13 @@ export default function Header({ handleModalClick, menuIsOpen, closeModal }: { h
                     </div>
                     <div className="flex items-center gap-2 sm:gap-4">
                         {
-                            [
-                                { title: 'Linkedin', href: 'https://linkedin.com/in/ezema-emmanuel' }, 
-                                { title: 'Github', href: 'https://github.com/ennanuel' }, 
-                                { title: 'Twitter', href: 'https://x.com/nnanna-ezema' }].map(({ title, href }, index) => (
+                            socials.map(({ platform, url_link }, index) => (
                                 <li 
                                     key={index} 
                                     style={{ '--delay': `${(index + 5) * 100}ms` } as React.CSSProperties}
                                     className={`${menuIsOpen ? 'delay-[var(--delay)]' : 'opacity-0'} list-none transition-opacity duration-1000 ease-expo`}
                                 >
-                                    <Button text={title} onClick={() => { location.href = href }} className="font-mono uppercase text-sm sm:text-base px-4 min-h-[36px] rounded-full sm:rounded-md border border-brown-600 text-brown-500"></Button>
+                                    <Button text={platform} onClick={() => { location.href = url_link }} className="font-mono uppercase text-sm sm:text-base px-4 min-h-[36px] rounded-full sm:rounded-md border border-brown-600 text-brown-500"></Button>
                                 </li>
                             ))
                         }
