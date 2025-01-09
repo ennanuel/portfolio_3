@@ -5,19 +5,10 @@ import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { v4 as generateId } from "uuid";
+
 import Button from "./Button";
 
-type Props = { 
-    testimonial: string; 
-    name: string; 
-    role: string; 
-    company: string; 
-    tags: string[]; 
-    image: string; 
-    maxLength: number, 
-    index: number; 
-    setIndex: React.Dispatch<React.SetStateAction<number>> 
-}
+import { EzemaTestimonials } from "../types";
 
 
 const ease = [.16, 1, .3, 1];
@@ -28,8 +19,8 @@ const getPages = ( maxLength: number ) => {
     return result;
 }
 
-export default function Testimonial({ testimonial, name, role, company, tags, image, maxLength, index, setIndex }: Props) {
-    const words = useMemo(() => testimonial.split(' '), [testimonial]);
+export default function Testimonial({ testimonial, maxLength, index, setIndex }: { testimonial: EzemaTestimonials, maxLength: number; index: number; setIndex: React.Dispatch<React.SetStateAction<number>> }) {
+    const words = useMemo(() => testimonial.verdict.split(' '), [testimonial]);
 
     const next = () => {
         location.href = '#testimonial';
@@ -60,7 +51,7 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                                 initial={{ scale: 1.2 }}
                                 animate={{ scale: 1 }}
                                 exit={{ scale: 1 }}
-                                src={image} 
+                                src={testimonial.client_image.publicUrl} 
                                 className="rounded-md object-cover saturate-0 absolute top-0 left-0 w-full h-full" 
                                 />
                         </motion.div>   
@@ -75,7 +66,7 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                                 words.map((word, index) => (
                                     <span key={index} className="inline-block overflow-hidden -mb-4">
                                         <motion.span 
-                                            key={testimonial}
+                                            key={testimonial.id}
                                             transition={{ ease, duration: 1, delay: (index/25) }}
                                             initial={{ y: '100%' }} 
                                             animate={{ y: 0 }} 
@@ -97,7 +88,7 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                                     animate={{ y: 0 }} 
                                     exit={{ y: '-100%' }} 
                                     className="font-medium font-poppins tracking-tighter text-[1.2rem] text-black-75 block"
-                                >{name}</motion.span>  
+                                >{testimonial.client_name}</motion.span>  
                             </AnimatePresence>
                         </div>
                         <div className="relative font-poppins overflow-hidden tracking-tighter text-[1.1rem] text-black-50">
@@ -109,7 +100,7 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                                     animate={{ y: 0 }} 
                                     exit={{ y: '-100%' }} 
                                     className="inline-block"
-                                >{role}&nbsp;@{company}</motion.span> 
+                                >{testimonial.client_role}&nbsp;@{testimonial.client_company}</motion.span> 
                             </AnimatePresence>
                         </div>
                     </div>
@@ -117,7 +108,7 @@ export default function Testimonial({ testimonial, name, role, company, tags, im
                         <AnimatePresence mode="wait" initial={false}>
                             <motion.div key={id} className="flex flex-wrap gap-2 justify-center md:justify-start">
                                 {
-                                    tags.map((tag, index) => (
+                                    testimonial.services.map((tag, index) => (
                                         <span key={index} className="block overflow-hidden">
                                             <motion.span 
                                                 key={index}
