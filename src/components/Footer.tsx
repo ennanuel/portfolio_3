@@ -3,56 +3,38 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MdArrowUpward } from "react-icons/md";
 import MenuLink from "./MenuLink";
+import { EzemaSocials } from "../types";
 
 
 
 const MENUS = [
     {
-        text: "Home",
-        href: "#"
+        platform: "Home",
+        url_link: "#"
     },
     {
-        text: "Services",
-        href: "#services"
+        platform: "Services",
+        url_link: "#services"
     },
     {
-        text: "Works",
-        href: "#projects"
+        platform: "Works",
+        url_link: "#projects"
     },
     {
-        text: "About",
-        href: "#about"
+        platform: "About",
+        url_link: "#about"
     },
     {
-        text: "Testimonials",
-        href: "#testimonials"
+        platform: "Testimonials",
+        url_link: "#testimonials"
     },
     {
-        text: "Contact",
-        href: "#contact"
+        platform: "Contact",
+        url_link: "#contact"
     }
 ];
 
-const SOCIALS = [
-    {
-        text: "LinkedIn",
-        href: "https://linkedin.com/in/ezema-emmanuel"
-    },
-    {
-        text: "Github",
-        href: "https://github.com/ennanuel"
-    },
-    {
-        text: "Instagram",
-        href: "https://instagram.com/by.ezema"
-    },
-    {
-        text: "Twitter",
-        href: "https://x.com/nnanna-ezema"
-    }
-]
-
-export default function Footer() {
+export default function Footer({ socials }: { socials: EzemaSocials[] }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const anchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -95,7 +77,7 @@ export default function Footer() {
                         <span className="flex items-center font-medium font-poppins tracking-tighter text-base md:text-lg h-[40px] border-b border-black-25">Socials</span>
                         <ul className="flex flex-col gap-1 md:gap-2 text-sm lg:text-base font-poppins tracing-tighter text-black-50">
                             {
-                                SOCIALS.map((link, index) => (
+                                socials.map((link, index) => (
                                     <MenuLink key={index} {...link} target="_blank" />
                                 ))
                             }                        
