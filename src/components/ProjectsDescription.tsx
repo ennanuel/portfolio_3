@@ -1,15 +1,15 @@
 
 
 
-export default function ProjectsDescription({ projects, currentIndex }: { currentIndex: number; projects: { description: string; index: number}[] }) {
+export default function ProjectsDescription({ projects, currentIndex }: { currentIndex: number; projects: { desc: string; index: number}[] }) {
 
     return (
         <div className="relative">
             {
-                projects.map(({ description, index }) => (
+                projects.map(({ desc, index }) => (
                     <p key={index} className="absolute bottom-0 left-0 w-full max-w-[360px] font-poppins tracking-tighter text-black-50">
                         {
-                            [description.split(' ').map((word, subIndex) => (
+                            [desc.split(' ').map((word, subIndex) => (
                                 <span className="inline-block overflow-hidden">
                                     <span 
                                         style={{ 
