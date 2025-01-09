@@ -3,9 +3,12 @@
 import { Title } from "./Title"
 import SubTitle from "./SubTitle"
 import Projects from "./Projects"
+import { EzemaProjects } from "../types"
 
 
-export default function ProjectSection() {
+export default function ProjectSection({ projects }: { projects: EzemaProjects[] }) {
+
+    if(!projects.length) return;
 
     return (
         <section id="projects" className="min-h-screen relative z-[4] bg-dark text-brown-200 flex flex-col px-4 sm:px-6 md:px-10 py-20">
@@ -16,7 +19,7 @@ export default function ProjectSection() {
                 </div>
                 <SubTitle title="Projects">Featured projects that have been meticulously crafted with passion to drive results and impact.</SubTitle>
             </div>
-            <Projects />
+            <Projects projects={projects} />
         </section>
     )
 }
