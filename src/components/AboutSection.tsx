@@ -4,7 +4,6 @@ import { AltTitle } from "./AltTitle";
 
 import { cubicBezier, motion, MotionValue, useScroll, useTransform } from "framer-motion";
 
-import image from "../assets/my_image.jpg";
 import SubTitle from "./SubTitle";
 import { useRef } from "react";
 
@@ -63,7 +62,7 @@ export default function AboutSection() {
                 </div>
                 <div className="flex flex-col sticky top-0 md:flex-row gap-12">
                     <div className="flex-1">                            
-                        <img src={image} alt="" className="w-full max-w-[240px] aspect-square lg:aspect-[.7] object-cover rounded-md grayscale" />
+                        <img src="/my_image.webp" alt="An image of Emmanuel Ezema" className="w-full max-w-[240px] aspect-square lg:aspect-[.7] object-cover rounded-md grayscale" />
                     </div>
 
                     <div className="flex flex-1">
