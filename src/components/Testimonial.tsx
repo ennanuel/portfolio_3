@@ -44,15 +44,16 @@ export default function Testimonial({ testimonial, maxLength, index, setIndex }:
                             initial={{ clipPath: 'polygon(0 100%, 100% 100%, 100% 100%, 0 100%)' }}
                             animate={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)'}}
                             exit={{ clipPath: 'polygon(0 0, 100% 0, 100%, 0, 0 0)' }}
-                            className="absolute top-0 left-0 w-full h-full  rounded-full md:rounded-md object-cover grayscale overflow-hidden"
+                            className="absolute bottom-0 left-0 w-[calc(100%_+_1px)] h-[calc(100%_+_1px)]  rounded-full md:rounded-md object-cover grayscale overflow-hidden"
                         >
                             <motion.img 
+                                loading="lazy"
                                 transition={{ ease: [1, .2, .16, 1], duration: 1.8 }}
                                 initial={{ scale: 1.2 }}
                                 animate={{ scale: 1 }}
                                 exit={{ scale: 1 }}
-                                src={testimonial.client_image.publicUrl} 
-                                className="rounded-md object-cover saturate-0 absolute top-0 left-0 w-full h-full" 
+                                src={testimonial?.client_image?.publicUrl} 
+                                className="rounded-md object-cover saturate-0 absolute bottom-0 left-0 w-full h-full" 
                                 />
                         </motion.div>   
                     </AnimatePresence>
@@ -66,7 +67,7 @@ export default function Testimonial({ testimonial, maxLength, index, setIndex }:
                                 words.map((word, index) => (
                                     <span key={index} className="inline-block overflow-hidden -mb-4">
                                         <motion.span 
-                                            key={testimonial.id}
+                                            key={testimonial?.id}
                                             transition={{ ease, duration: 1, delay: (index/25) }}
                                             initial={{ y: '100%' }} 
                                             animate={{ y: 0 }} 
@@ -100,7 +101,7 @@ export default function Testimonial({ testimonial, maxLength, index, setIndex }:
                                     animate={{ y: 0 }} 
                                     exit={{ y: '-100%' }} 
                                     className="inline-block"
-                                >{testimonial.client_role}&nbsp;@{testimonial.client_company}</motion.span> 
+                                >{testimonial.client_role}&nbsp;@{testimonial?.client_company}</motion.span> 
                             </AnimatePresence>
                         </div>
                     </div>
@@ -108,7 +109,7 @@ export default function Testimonial({ testimonial, maxLength, index, setIndex }:
                         <AnimatePresence mode="wait" initial={false}>
                             <motion.div key={id} className="flex flex-wrap gap-2 justify-center md:justify-start">
                                 {
-                                    testimonial.services.map((tag, index) => (
+                                    testimonial?.services?.map((tag, index) => (
                                         <span key={index} className="block overflow-hidden">
                                             <motion.span 
                                                 key={index}
