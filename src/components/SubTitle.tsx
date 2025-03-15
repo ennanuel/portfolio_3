@@ -30,7 +30,7 @@ export default function SubTitle({ children, title, className, paragraphClass, a
                 {
                     words.map((word, index) => (
                         word.includes('\\br') ?
-                        <br className="block" /> :
+                        <br key={index} className="block" /> :
                         <span key={index} className="inline-block overflow-hidden">
                             <motion.span
                                 transition={{ 
