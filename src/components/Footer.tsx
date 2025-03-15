@@ -34,7 +34,7 @@ const MENUS = [
     }
 ];
 
-export default function Footer({ socials }: { socials: EzemaSocials[] }) {
+export default function Footer({ socials }: { socials?: EzemaSocials[] }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const anchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -77,7 +77,7 @@ export default function Footer({ socials }: { socials: EzemaSocials[] }) {
                         <span className="flex items-center font-medium font-poppins tracking-tighter text-base md:text-lg h-[40px] border-b border-black-25">Socials</span>
                         <ul className="flex flex-col gap-1 md:gap-2 text-sm lg:text-base font-poppins tracing-tighter text-black-50">
                             {
-                                socials.map((link, index) => (
+                                socials?.map((link, index) => (
                                     <MenuLink key={index} {...link} target="_blank" />
                                 ))
                             }                        
@@ -86,7 +86,7 @@ export default function Footer({ socials }: { socials: EzemaSocials[] }) {
                 </div>
                 <div className="flex justify-between items-end gap-12">
                     <span className="text-black-90 font-ov-soge font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[3rem] sm:leading-[4.1rem] md:leading-[5rem] lg:leading-[6.4rem]">
-                        <span className="font-poppins">© 2024</span><br />
+                        <span className="font-poppins">© {(new Date()).getFullYear()}</span><br />
                         <span>Ezema Emmanuel</span>
                     </span>
                     <motion.div 
