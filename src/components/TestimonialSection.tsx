@@ -7,9 +7,9 @@ import SubTitle from "./SubTitle";
 import Testimonial from "./Testimonial";
 import { EzemaTestimonials } from "../types";
 
-export default function TestimonialSection({ testimonials }: { testimonials: EzemaTestimonials[] }) {
+export default function TestimonialSection({ testimonials }: { testimonials?: EzemaTestimonials[] }) {
     const [index, setIndex] = useState(0);
-    const testimonial = useMemo(() => testimonials[index], [index]);
+    const testimonial = useMemo(() => testimonials && testimonials[index], [index]);
 
     return (
         <section id="testimonials" className="relative z-[6] mt-[-200px] min-h-screen bg-light flex flex-col md:gap-10 pt-20 pb-[160px]">
@@ -24,7 +24,7 @@ export default function TestimonialSection({ testimonials }: { testimonials: Eze
             <hr className="md:mx-12 border-0 border-b border-black-25" />
 
             {
-                testimonial ?
+                testimonials?.length && testimonial ?
                     <Testimonial testimonial={testimonial} maxLength={testimonials.length} index={index} setIndex={setIndex} /> :
                     null
             }
