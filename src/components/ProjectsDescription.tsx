@@ -1,12 +1,12 @@
 
 
 
-export default function ProjectsDescription({ projects, currentIndex }: { currentIndex: number; projects: { desc: string; index: number}[] }) {
+export default function ProjectsDescription({ projects, currentIndex }: { currentIndex: number; projects?: { desc: string; index: number}[] }) {
 
     return (
         <div className="relative">
             {
-                projects.map(({ desc, index }) => (
+                projects?.map(({ desc, index }) => (
                     <p key={index} className="absolute bottom-0 left-0 w-full max-w-[360px] font-poppins tracking-tighter text-black-50">
                         {
                             [desc.split(' ').map((word, subIndex) => (
