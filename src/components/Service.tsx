@@ -41,7 +41,7 @@ export default function Service({ subTitle, index, total, title, description, su
             style={{
                 zIndex: index + 2,
                 height: `calc(100vh - ${topHeight} - calc(${index} * calc(${titlePadding} + ${titleFontSize})))`,
-                top: `calc(${topHeight} + calc(${index} * calc(${titleFontSize} + ${titlePadding})))`
+                top: `calc(${topHeight} + calc(${index} * calc(${titleFontSize} + ${titlePadding})))`,
             }}
             className="w-full sticky"
         >
@@ -61,7 +61,7 @@ export default function Service({ subTitle, index, total, title, description, su
             style={{
                 top: `calc(${topHeight} + calc(${index + 1} * calc(${titleFontSize} + ${titlePadding})))`,
                 marginTop: `calc(-100vh + ${topHeight} + calc(${index + 1} * calc(${titleFontSize} + ${titlePadding})))`,
-                minHeight: `calc(100vh - ${topHeight} - calc(${index + 1} * calc(${titleFontSize} + ${titlePadding})))`,
+                height: `calc(100vh - ${topHeight} - calc(${index + 1} * calc(${titleFontSize} + ${titlePadding})))`,
                 marginBottom: index < (total - 1) ? topHeight : ''
             }} 
             className="sticky w-full bg-dark flex flex-col gap-8"
@@ -70,7 +70,7 @@ export default function Service({ subTitle, index, total, title, description, su
             <ul className="flex flex-col mt-6">
                 {
                     subServices.map((subService, i) => (
-                        <li className="flex items-center py-4 first:border-t-0 border-t border-black-75">
+                        <li key={i} className="flex items-center py-4 first:border-t-0 border-t border-black-75">
                             <span className="font-mono text-black-50 w-20 block text-xs sm:text-sm md:text-base pl-4 md:pl-0">[0{i + 1}]</span>
                             <span className="text-[.9rem] sm:text-base md:text-lg font-medium font-ov-soge">{subService}</span>
                         </li> 
