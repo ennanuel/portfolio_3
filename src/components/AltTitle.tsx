@@ -26,11 +26,11 @@ export function AltTitle({ children, className }: { children: string; className?
             <span ref={ref} className={`group relative font-ov-soge font-bold text-3xl md:text-4xl flex flex-col w-fit ${className}`}>
                 {
                     words.map((word, index) => (
-                        <span className="inline-flex -mb-4 sm:mb-0 overflow-hidden" key={index}>
+                        <span key={index} className="inline-flex -mb-4 sm:mb-0 overflow-hidden">
                             {
                                 word.split('').map((letter, subIndex) => (
                                     letter === '-' ?
-                                    <span>&nbsp;</span> :
+                                    <span key={subIndex}>&nbsp;</span> :
                                     <motion.span 
                                         transition={{ 
                                             ease, 
