@@ -38,7 +38,7 @@ const MENUS = [
     }
 ]
 
-export default function HomeSection({ setShowHeader, socials }: { socials: EzemaSocials[]; setShowHeader: React.Dispatch<React.SetStateAction<boolean>> }) {
+export default function HomeSection({ socials }: { socials?: EzemaSocials[] }) {
     const logoElementRef = useRef<HTMLElement>(null);
     const [{ x, y }, setPositions] = useState({ x: 0, y: 0 });
 
@@ -82,8 +82,6 @@ export default function HomeSection({ setShowHeader, socials }: { socials: Ezema
                 }}
                 id="home-layout"
                 className="bg-light sticky top-0 z-[1] px-4 sm:px-6 md:px-10 py-6 h-[100dvh]"
-                onViewportEnter={() => setShowHeader(false)}
-                onViewportLeave={() => setShowHeader(true)}
             >
                 <div className="logo">
                     <motion.span 
@@ -216,7 +214,7 @@ export default function HomeSection({ setShowHeader, socials }: { socials: Ezema
                 <div className="socials flex items-end w-full">
                     <ul className="flex h-fit w-full flex-wrap flex-start sm:justify-end md:justify-start items-end lg:items-center lg:gap-6">
                         {
-                            socials.map(({ url_link, platform }, index) => (
+                            socials?.map(({ url_link, platform }, index) => (
                                 <li key={index} className="overflow-hidden text-black-50 uppercase text-sm md:text-base font-mono">
                                     <motion.span transition={{ ease, duration: 1.5, delay: 0.6 + (index / 10) }} initial={{ y: '100%' }} animate={{ y: 0 }} className="block">
                                         <Button onClick={() => { location.href = url_link }} text={platform} hoverTextClassName="text-brown-600" className="h-30px px-2 font-mono uppercase before:bg-brown-500/50"></Button>
