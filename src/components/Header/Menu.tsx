@@ -87,12 +87,12 @@ export default function Menu({ menuIsOpen, closeModal, socials }: Props) {
                                 <li 
                                     key={index} 
                                     style={{ '--delay': `${(index + 3) * 100}ms`} as React.CSSProperties} 
-                                    className="z-[9999] group overflow-hidden font-bold font-ov-soge text-xl md:text-2xl lg:text-3xl leading-[2.6rem] md:leading-[3.5rem] lg:leading-[3.8rem] uppercase w-fit"
+                                    className="z-[9999] group overflow-hidden w-fit"
                                 >
                                     <a href={href} onClick={closeModal} className={`${menuIsOpen ? 'delay-[var(--delay)]' : 'translate-y-full'} flex items-center justify-center w-fit transition-transform duration-1000 ease-expo`}>
                                         <span className="flex items-center justify-center -translate-x-10 group-hover:translate-x-0 transition-transform duration-500 ease-expo">
                                             <span className="mb-2 w-10 transition-transform scale-0 group-hover:scale-100 duration-500 ease-expo origin-left"><FaArrowRight size={20} /></span>
-                                            <span>{title}</span>
+                                            <span className="font-bold font-ov-soge text-xl md:text-2xl lg:text-3xl leading-[2.6rem] md:leading-[3.5rem] lg:leading-[3.8rem] uppercase">{title}</span>
                                         </span>
                                     </a>
                                 </li>
