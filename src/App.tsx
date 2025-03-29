@@ -3,8 +3,6 @@ import { useEffect } from "react";
 
 import { getCalApi } from "@calcom/embed-react";
 
-import { gql, useQuery } from "@apollo/client";
-
 import Lenis from "lenis";
 
 import HomeSection from "./components/HomeSection";
@@ -16,53 +14,11 @@ import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 
-import { QueryResult } from "./types";
-
-
-
-const QUERY = gql`
-    query EzemaTestimonials {
-        ezemaProjects {
-            title
-            desc
-            demo_url
-            code_url
-            category
-            tags
-            image_public_id
-            image_url
-            video_public_id
-            video_url
-            createdAt
-        }
-        ezemaTestimonials {
-            id
-            verdict
-            services
-            client_name
-            client_role
-            client_company
-            client_image {
-                publicUrl
-            }
-        }
-        ezemaSocials(where: {
-            platform: {
-                not: {
-                    equals: "Email"
-                }
-            }
-        }) {
-            id
-            platform
-            url_link
-        }
-    }
-`;
+import { useFetch } from "./utils/hooks";
 
 
 export default function App() {
-    const { loading, data } = useQuery<QueryResult>(QUERY);
+    const { loading, data } = useFetch();
 
     useEffect(() => {
         const lenis = new Lenis();
@@ -89,14 +45,14 @@ export default function App() {
 
     return (
         <div className="">
-            <Header socials={data?.ezemaSocials} />
-            <HomeSection socials={data?.ezemaSocials} />
+            <Header socials={data?.socials} />
+            <HomeSection socials={data?.socials} />
             <ServicesSection />
-            <ProjectsSection projects={data?.ezemaProjects} />
+            <ProjectsSection projects={data?.projects} />
             <AboutSection />
-            <TestimonialSection testimonials={data?.ezemaTestimonials} />
+            <TestimonialSection testimonials={data?.testimonials} />
             <ContactSection />
-            <Footer socials={data?.ezemaSocials} />
+            <Footer socials={data?.socials} />
         </div>
     )
 }
