@@ -33,7 +33,7 @@ export type EzemaSocials = {
 };
 
 export type QueryResult = {
-    ezemaProjects: EzemaProjects[];
-    ezemaTestimonials: EzemaTestimonials[];
-    ezemaSocials: EzemaSocials[];
+    projects?: EzemaProjects[];
+    testimonials?: EzemaTestimonials[];
+    socials?: EzemaSocials[];
 }
