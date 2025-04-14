@@ -9,7 +9,7 @@ import HomeSection from "./components/HomeSection";
 import ServicesSection from "./components/ServicesSection";
 import ProjectsSection from "./components/ProjectsSection";
 import AboutSection from "./components/AboutSection";
-import TestimonialSection from "./components/TestimonialSection";
+// import TestimonialSection from "./components/TestimonialSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -41,7 +41,7 @@ export default function App() {
         })();
     }, []);
 
-    if(loading) return <div className="bg-black-100 h-screen w-full"></div>
+    if(loading) return <div className="bg-black-100 h-screen w-full"></div>;
 
     return (
         <div className="">
@@ -50,7 +50,7 @@ export default function App() {
             <ServicesSection />
             <ProjectsSection projects={data?.projects} />
             <AboutSection />
-            <TestimonialSection testimonials={data?.testimonials} />
+            {/* <TestimonialSection testimonials={data?.testimonials} /> */}
             <ContactSection />
             <Footer socials={data?.socials} />
         </div>

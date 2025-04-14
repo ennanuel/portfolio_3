@@ -1,8 +1,11 @@
+import { IconType } from "react-icons";
 
 
 
 type Props = { 
     index: number; 
+    company?: string;
+    Icon?: IconType;
     total: number; 
     subTitle: string; 
     title: string; 
@@ -14,7 +17,7 @@ type Props = {
 };
 
 
-export default function Service({ subTitle, index, total, title, description, subServices, topHeight, titleFontSize, titlePadding }: Props) {
+export default function Service({ company, Icon, subTitle, index, total, title, description, subServices, topHeight, titleFontSize, titlePadding }: Props) {
 
     return (
         <>
@@ -35,8 +38,11 @@ export default function Service({ subTitle, index, total, title, description, su
             style={{ 
                 marginTop: `calc(-100vh + ${topHeight} + calc(${index} * calc(${titleFontSize} + ${titlePadding})))`
             }} 
-            className="sticky top-0 font-ov-soge uppercase text-black-50 pl-20 text-xs sm:text-sm bg-dark pt-10 w-full"
-        >{subTitle}</span>
+            className="sticky top-0 flex items-center justify-between gap-4 font-mono /font-ov-soge uppercase text-black-50 pl-20 /text-xs text-sm sm:text-base /sm:text-sm bg-dark pt-10 w-full"
+        >
+            <span>{subTitle}</span>
+            <span>{company}</span>
+        </span>
         <div 
             style={{
                 zIndex: index + 2,
@@ -53,7 +59,10 @@ export default function Service({ subTitle, index, total, title, description, su
                 }} 
                 className="flex bg-dark items-center font-medium font-ov-soge"
             >
-                <span className="block w-20 font-poppins text-base lg:text-xl pl-4 md:pl-0">{index > 10 ? index + 1 : `0${index+1}`}.</span>
+                <span className="h-[1rem] mb-2 lg:h-[1.78rem] flex items-center w-20 font-poppins text-base lg:text-xl pl-4 md:pl-0">
+                    {Icon ? <Icon size={40} className="opacity-30" /> : null}
+                    {/* <span>{index > 10 ? index + 1 : `0${index+1}`}.</span> */}
+                </span>
                 <h3 className="">{title}</h3>
             </div>
         </div>

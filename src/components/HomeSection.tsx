@@ -11,7 +11,8 @@ import MenuLink from "./MenuLink";
 import { EzemaSocials } from "../types";
 
 const MY_NAME = 'Ezema Emmanuel';
-const DESCRIPTION = 'I craft exceptional web applications and websites that align with your brand identity and drive business growth.';
+const DESCRIPTION = 'Driven frontend developer: building exceptional web experiences that elevate brands and drive results.';
+// const DESCRIPTION = 'I craft exceptional web applications and websites that align with your brand identity and drive business growth.';
 
 const ease = [.16, 1, .3, 1];
 
@@ -127,7 +128,7 @@ export default function HomeSection({ socials }: { socials?: EzemaSocials[] }) {
                                 initial={{ opacity: 0 }} 
                                 animate={{ opacity: 1 }} 
                                 transition={{ ease, duration: 2, delay: 1 }}
-                            >Web Developer / Designer</motion.span>
+                            >Front End Developer{/*Web Developer / Designer*/}</motion.span>
                         </h3>
                     </motion.div>
                 </div>

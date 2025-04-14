@@ -24,10 +24,10 @@ const MENUS = [
         platform: "About",
         url_link: "#about"
     },
-    {
-        platform: "Testimonials",
-        url_link: "#testimonials"
-    },
+    // {
+    //     platform: "Testimonials",
+    //     url_link: "#testimonials"
+    // },
     {
         platform: "Contact",
         url_link: "#contact"

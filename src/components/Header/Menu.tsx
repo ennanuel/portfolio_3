@@ -19,7 +19,7 @@ const MENU = [
     { title: "Services", href: "#services" }, 
     { title: "Projects", href: "#projects" }, 
     { title: "About", href: "#about" }, 
-    { title: "Testimonials", href: "#testimonials" }, 
+    // { title: "Testimonials", href: "#testimonials" }, 
     { title: "Contact", href: "#contact" }
 ];
 
