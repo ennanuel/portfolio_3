@@ -48,7 +48,7 @@ export default function App() {
             <Header socials={data?.socials} />
             <HomeSection socials={data?.socials} />
             <ServicesSection />
-            <ProjectsSection projects={data?.projects} />
+            <ProjectsSection projects={data?.projects?.reverse()} />
             <AboutSection />
             {/* <TestimonialSection testimonials={data?.testimonials} /> */}
             <ContactSection />
