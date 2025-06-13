@@ -1,7 +1,6 @@
 
-import { useEffect } from "react";
-
-import { getCalApi } from "@calcom/embed-react";
+import { useEffect, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import Lenis from "lenis";
 
@@ -9,15 +8,19 @@ import HomeSection from "./components/HomeSection";
 import ServicesSection from "./components/ServicesSection";
 import ProjectsSection from "./components/ProjectsSection";
 import AboutSection from "./components/AboutSection";
-// import TestimonialSection from "./components/TestimonialSection";
+import TestimonialSection from "./components/TestimonialSection";
 import ContactSection from "./components/ContactSection";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import Loading from "./components/Loading";
 
 import { useFetch } from "./utils/hooks";
+import { initializeCalApi, saveVisitorToDB } from "./utils";
 
 
 export default function App() {
+    const [searchParams] = useSearchParams();
+    const showingContentFor = useMemo(() => searchParams.get('t'), [searchParams]);
     const { loading, data } = useFetch();
 
     useEffect(() => {
@@ -32,27 +35,22 @@ export default function App() {
     }, []);
     
     useEffect(()=>{
-        (async function () {
-            const cal = await getCalApi({ namespace: "30min" });
-            cal("ui", {
-                hideEventTypeDetails: false,
-                layout: "month_view"
-            });
-        })();
+        initializeCalApi();
+        saveVisitorToDB();
     }, []);
 
-    if(loading) return <div className="bg-black-100 h-screen w-full"></div>;
+    if(loading) return <Loading />
 
     return (
         <div className="">
-            <Header socials={data?.socials} />
-            <HomeSection socials={data?.socials} />
-            <ServicesSection />
-            <ProjectsSection projects={data?.projects?.reverse()} />
+            <Header showingContentFor={showingContentFor} socials={data?.socials} />
+            <HomeSection showingContentFor={showingContentFor} socials={data?.socials} />
+            <ServicesSection showingContentFor={showingContentFor} />
+            <ProjectsSection showingContentFor={showingContentFor} projects={data?.projects} />
             <AboutSection />
-            {/* <TestimonialSection testimonials={data?.testimonials} /> */}
+            <TestimonialSection showingContentFor={showingContentFor} testimonials={data?.testimonials} />
             <ContactSection />
-            <Footer socials={data?.socials} />
+            <Footer showingContentFor={showingContentFor} socials={data?.socials} />
         </div>
     )
 }
