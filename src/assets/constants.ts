@@ -1,5 +1,9 @@
 
 
+export const PROJECT_ID = String(import.meta.env.VITE_PROJECT_ID);
+export const DATABASE_ID = String(import.meta.env.VITE_DB_ID);
+export const COLLECTION_ID = String(import.meta.env.VITE_COLLECTION_ID);
+
 export const MENUS = [
     {
         platform: "Home",

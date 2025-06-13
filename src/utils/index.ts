@@ -1,14 +1,11 @@
 
 import { Client, Databases, ID } from "appwrite";
 import { getCalApi } from "@calcom/embed-react";
+import { COLLECTION_ID, DATABASE_ID, PROJECT_ID } from "../assets/constants";
 
 type Payload = {
   [key: string]: string;
 };
-
-const PROJECT_ID = String(import.meta.env.NEXT_PUBLIC_PROJECT_ID);
-const DATABASE_ID = String(import.meta.env.NEXT_PUBLIC_DB_ID);
-const COLLECTION_ID = String(import.meta.env.NEXT_PUBLIC_COLLECTION_ID2);
 
 async function getIpAddress() {
     try {
