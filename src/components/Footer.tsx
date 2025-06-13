@@ -3,38 +3,11 @@ import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { MdArrowUpward } from "react-icons/md";
 import MenuLink from "./MenuLink";
-import { EzemaSocials } from "../types";
+import { FooterProps } from "../types";
+import { MENUS } from "../assets/constants";
 
 
-
-const MENUS = [
-    {
-        platform: "Home",
-        url_link: "#"
-    },
-    {
-        platform: "Services",
-        url_link: "#services"
-    },
-    {
-        platform: "Works",
-        url_link: "#projects"
-    },
-    {
-        platform: "About",
-        url_link: "#about"
-    },
-    // {
-    //     platform: "Testimonials",
-    //     url_link: "#testimonials"
-    // },
-    {
-        platform: "Contact",
-        url_link: "#contact"
-    }
-];
-
-export default function Footer({ socials }: { socials?: EzemaSocials[] }) {
+export default function Footer({ socials, showingContentFor }: FooterProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const anchorRef = useRef<HTMLAnchorElement>(null);
 
@@ -68,7 +41,9 @@ export default function Footer({ socials }: { socials?: EzemaSocials[] }) {
                         <ul className="flex flex-col gap-1 md:gap-2 text-sm lg:text-base font-poppins tracing-tighter text-black-50">
                             {
                                 MENUS.map((link, index) => (
-                                    <MenuLink key={index} {...link} />
+                                    showingContentFor !== 'frontend' || (showingContentFor === 'frontend' && link.platform !== 'Testimonials') ?
+                                        <MenuLink key={index} {...link} /> :
+                                        null
                                 ))
                             }
                         </ul>

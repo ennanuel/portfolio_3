@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { useScroll, motion, useTransform, cubicBezier } from "framer-motion";
 
@@ -8,38 +8,21 @@ import { MdOutlineArrowOutward } from "react-icons/md";
 import image from "../assets/my_image.jpg";
 import Button from "./Button";
 import MenuLink from "./MenuLink";
-import { EzemaSocials } from "../types";
+import { IntroSectionProps } from "../types";
+import { MENUS } from "../assets/constants";
 
 const MY_NAME = 'Ezema Emmanuel';
-const DESCRIPTION = 'Driven frontend developer: building exceptional web experiences that elevate brands and drive results.';
-// const DESCRIPTION = 'I craft exceptional web applications and websites that align with your brand identity and drive business growth.';
+const TITLE_1 = 'Front End Developer';
+const TITLE_2 = 'Web Developer / Designer';
+const DESCRIPTION_1 = 'Driven frontend developer: building exceptional web experiences that elevate brands and drive results.';
+const DESCRIPTION_2 = 'I craft exceptional web applications and websites that align with your brand identity and drive business growth.';
 
 const ease = [.16, 1, .3, 1];
 
-const MENUS = [
-    {
-        platform: "Services",
-        url_link: "#services"
-    },
-    {
-        platform: "Works",
-        url_link: "#projects"
-    },
-    {
-        platform: "About",
-        url_link: "#about"
-    },
-    {
-        platform: "Testimonials",
-        url_link: "#testimonials"
-    },
-    {
-        platform: "Contact",
-        url_link: "#contact"
-    }
-]
+export default function HomeSection({ socials, showingContentFor }: IntroSectionProps) {
+    const title = useMemo(() => showingContentFor === 'frontend' ? TITLE_1 : TITLE_2, [showingContentFor]);
+    const description = useMemo(() => showingContentFor === 'frontend' ? DESCRIPTION_1 : DESCRIPTION_2, [showingContentFor]);
 
-export default function HomeSection({ socials }: { socials?: EzemaSocials[] }) {
     const logoElementRef = useRef<HTMLElement>(null);
     const [{ x, y }, setPositions] = useState({ x: 0, y: 0 });
 
@@ -128,7 +111,7 @@ export default function HomeSection({ socials }: { socials?: EzemaSocials[] }) {
                                 initial={{ opacity: 0 }} 
                                 animate={{ opacity: 1 }} 
                                 transition={{ ease, duration: 2, delay: 1 }}
-                            >Front End Developer{/*Web Developer / Designer*/}</motion.span>
+                            >{title}</motion.span>
                         </h3>
                     </motion.div>
                 </div>
@@ -136,21 +119,23 @@ export default function HomeSection({ socials }: { socials?: EzemaSocials[] }) {
                     <ul className="lg:mr-20 flex flex-col flex-wrap items-start justify-start font-poppins tracking-tighter md:gap-2 text-left text-black-50 text-base">
                         {
                             MENUS.map((link, index) => (
-                                <motion.li 
-                                    key={index} 
-                                    className="overflow-hidden"
-                                    transition={{ ease, duration: 2, delay: 1.5 + (index/10) }} 
-                                    initial={{ opacity: 0 }} 
-                                    animate={{ opacity: 1 }}
-                                >
-                                    <motion.span 
-                                        className="block" 
-                                        style={{ y: reverseTranslateY, opacity }} 
+                                showingContentFor !== 'frontend' || (showingContentFor === 'frontend' && link.platform !== 'Testimonials') ?
+                                    <motion.li 
+                                        key={index} 
+                                        className="overflow-hidden"
+                                        transition={{ ease, duration: 2, delay: 1.5 + (index/10) }} 
+                                        initial={{ opacity: 0 }} 
+                                        animate={{ opacity: 1 }}
                                     >
-                                        <MenuLink {...link} />
-                                    </motion.span>
-                                </motion.li>
-                            ))
+                                        <motion.span 
+                                            className="block" 
+                                            style={{ y: reverseTranslateY, opacity }} 
+                                        >
+                                            <MenuLink {...link} />
+                                        </motion.span>
+                                    </motion.li> :
+                                    null
+                            )) 
                         }
                     </ul>
                 </div>
@@ -185,7 +170,7 @@ export default function HomeSection({ socials }: { socials?: EzemaSocials[] }) {
                         <div className="flex-1 w-fit flex flex-col gap-6 md:gap-10">
                             <p className="text-[.9rem] sm:text-base w-full max-w-[320px] md:text-[1.2rem] leading-[1.4rem] sm:leading-[1.6rem] md:leading-[1.8rem] font-poppins tracking-tighter text-black-50">
                                 {
-                                    DESCRIPTION
+                                    description
                                         .split(" ")
                                         .map((word, index) => (
                                             <span key={index} className="inline-block overflow-hidden -mb-2">

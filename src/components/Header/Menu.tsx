@@ -6,24 +6,10 @@ import { FaArrowRight } from "react-icons/fa6";
 
 import Button from "../Button";
 
-import { EzemaSocials } from "../../types";
+import { MenuProps } from "../../types";
+import { MENUS } from "../../assets/constants";
 
-type Props = {
-    socials?: EzemaSocials[];
-    menuIsOpen: boolean;
-    closeModal: () => void;
-};
-
-const MENU = [
-    { title: "Home", href: "#intro" }, 
-    { title: "Services", href: "#services" }, 
-    { title: "Projects", href: "#projects" }, 
-    { title: "About", href: "#about" }, 
-    // { title: "Testimonials", href: "#testimonials" }, 
-    { title: "Contact", href: "#contact" }
-];
-
-export default function Menu({ menuIsOpen, closeModal, socials }: Props) {
+export default function Menu({ menuIsOpen, closeModal, socials, showingContentFor }: MenuProps) {
     const [{ initialPath, finalPath }, setPaths] = useState({ initialPath: "", finalPath: "" });
 
     const pathVariants = useMemo(() => ({
@@ -83,19 +69,21 @@ export default function Menu({ menuIsOpen, closeModal, socials }: Props) {
                 <nav className="">
                     <ul className="flex flex-col gap-1 sm:gap-2">
                         {
-                            MENU.map(({ title, href }, index) => (
-                                <li 
-                                    key={index} 
-                                    style={{ '--delay': `${(index + 3) * 100}ms`} as React.CSSProperties} 
-                                    className="z-[9999] group overflow-hidden w-fit"
-                                >
-                                    <a href={href} onClick={closeModal} className={`${menuIsOpen ? 'delay-[var(--delay)]' : 'translate-y-full'} flex items-center justify-center w-fit transition-transform duration-1000 ease-expo`}>
-                                        <span className="flex items-center justify-center -translate-x-10 group-hover:translate-x-0 transition-transform duration-500 ease-expo">
-                                            <span className="mb-2 w-10 transition-transform scale-0 group-hover:scale-100 duration-500 ease-expo origin-left"><FaArrowRight size={20} /></span>
-                                            <span className="font-bold font-ov-soge text-xl md:text-2xl lg:text-3xl leading-[2.6rem] md:leading-[3.5rem] lg:leading-[3.8rem] uppercase">{title}</span>
-                                        </span>
-                                    </a>
-                                </li>
+                            MENUS.map(({ platform, url_link }, index) => (
+                                showingContentFor !== 'frontend' || (showingContentFor === 'frontend' && platform !== 'Testimonials') ?
+                                    <li 
+                                        key={index} 
+                                        style={{ '--delay': `${(index + 3) * 100}ms`} as React.CSSProperties} 
+                                        className="z-[9999] group overflow-hidden w-fit"
+                                    >
+                                        <a href={url_link} onClick={closeModal} className={`${menuIsOpen ? 'delay-[var(--delay)]' : 'translate-y-full'} flex items-center justify-center w-fit transition-transform duration-1000 ease-expo`}>
+                                            <span className="flex items-center justify-center -translate-x-10 group-hover:translate-x-0 transition-transform duration-500 ease-expo">
+                                                <span className="mb-2 w-10 transition-transform scale-0 group-hover:scale-100 duration-500 ease-expo origin-left"><FaArrowRight size={20} /></span>
+                                                <span className="font-bold font-ov-soge text-xl md:text-2xl lg:text-3xl leading-[2.6rem] md:leading-[3.5rem] lg:leading-[3.8rem] uppercase">{platform}</span>
+                                            </span>
+                                        </a>
+                                    </li> :
+                                    null
                             ))
                         }
                     </ul>

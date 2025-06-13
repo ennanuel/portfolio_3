@@ -3,43 +3,43 @@
 import { Title } from "./Title";
 import SubTitle from "./SubTitle";
 import Service from "./Service";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FaLaptop } from "react-icons/fa6";
 import { SiUpwork } from "react-icons/si";
+import { ServicesSectionProps } from "../types";
 
-// const SERVICES = [
-//     {
-//         subTitle: "Development",
-//         title: "Web Development",
-//         description: "Expertly coded websites and web applications designed to captivate your audience and drive business growth. I prioritize performance and user experience, ensuring your digital presence stands out.",
-//         subServices: [
-//             "CMS Integration",
-//             "Website & Web Application",
-//             "Motion & Animations"
-//         ]
-//     },
-//     {
-//         subTitle: "Design",
-//         title: "Web Design",
-//         description: "A well-designed website or web application is more than just a digital presence. It's a powerful tool that can elevate your brand, engage your audience, and drive business growth. We craft exceptional digital experiences that align with your unique brand identity and deliver results.",
-//         subServices: [
-//             "Wireframing",
-//             "Responsive Design",
-//             "User-centric Design",
-//         ]
-//     },
-//     {
-//         subTitle: "SEO",
-//         title: "SEO",
-//         description: "Want to dominate search engine results and attract more organic traffic? I'll optimize your website, create compelling content, and build high-quality backlinks to boost your online visibility, elevate your brand and drive real results.",
-//         subServices: [
-//             "Local SEO",
-//             "On-Page & Off-Page Optimization",
-//             "Website Audits & Analysis"
-//         ]
-//     }
-// ]
-
+const SERVICES = [
+    {
+        subTitle: "Development",
+        title: "Web Development",
+        description: "Expertly coded websites and web applications designed to captivate your audience and drive business growth. I prioritize performance and user experience, ensuring your digital presence stands out.",
+        subServices: [
+            "CMS Integration",
+            "Website & Web Application",
+            "Motion & Animations"
+        ]
+    },
+    {
+        subTitle: "Design",
+        title: "Web Design",
+        description: "A well-designed website or web application is more than just a digital presence. It's a powerful tool that can elevate your brand, engage your audience, and drive business growth. We craft exceptional digital experiences that align with your unique brand identity and deliver results.",
+        subServices: [
+            "Wireframing",
+            "Responsive Design",
+            "User-centric Design",
+        ]
+    },
+    {
+        subTitle: "SEO",
+        title: "SEO",
+        description: "Want to dominate search engine results and attract more organic traffic? I'll optimize your website, create compelling content, and build high-quality backlinks to boost your online visibility, elevate your brand and drive real results.",
+        subServices: [
+            "Local SEO",
+            "On-Page & Off-Page Optimization",
+            "Website Audits & Analysis"
+        ]
+    }
+];
 const EXPERIENCE = [
     {
         company: "Safe Security Dynamics",
@@ -65,9 +65,18 @@ const EXPERIENCE = [
             "Delivered remotely, resolved issues"
         ]
     },
-]
+];
 
-export default function ServicesSection() {
+const TITLE_1 = 'My Experience';
+const TITLE_2 = 'Your Success, My Goal';
+const DESCRIPTION_1 = 'Building dynamic web apps for startups and clients with React, TypeScript, and seamless API integrations.';
+const DESCRIPTION_2 = 'Your brand deserves a digital home that\'s as unique as you are. I specialize in crafting custom web experiences that captivate your audience and convert visitors into customers';
+
+export default function ServicesSection({ showingContentFor }: ServicesSectionProps) {
+    const title = useMemo(() => showingContentFor ? TITLE_1 : TITLE_2, [showingContentFor]);
+    const description = useMemo(() => showingContentFor ? DESCRIPTION_1 : DESCRIPTION_2, [showingContentFor]);
+    const services = useMemo(() => showingContentFor === 'frontend' ? EXPERIENCE : SERVICES, [showingContentFor]);
+
     const [{ topHeight, titleFontSize, titlePadding }, setDimensions] = useState({ topHeight: '', titleFontSize: '', titlePadding: '' });
 
     useEffect(() => {
@@ -85,15 +94,13 @@ export default function ServicesSection() {
     return (
         <section id="services" className="relative z-[3] bg-dark rounded-t-[30px] text-brown-200 min-h-screen md:px-10 flex-col lg:flex-row flex gap-20 md:pb-[160px]">
             <div className="sticky flex-1 lg:top-0 z-[20] lg:h-screen flex flex-col gap-10 mt-20 px-4 sm:px-6 lg:mt-0 lg:py-20 lg:pt-[124px] mb-[-20vh]">
-                <Title className="font-ov-soge font-bold">My Experience{/*Your Success, My Goal*/}</Title>
-                <SubTitle title="Services">
-                    {/* Your brand deserves a digital home that's as unique as you are. I specialize in crafting custom web experiences that captivate your audience and convert visitors into customers. */}{"Building dynamic web apps for startups and clients with React, TypeScript, and seamless API integrations."}
-                </SubTitle>
+                <Title className="font-ov-soge font-bold">{title}</Title>
+                <SubTitle title="Services">{description}</SubTitle>
             </div>
             <div className="flex-1">
                 <ul className="flex flex-1 flex-col items-start justify-start lg:mt-[50vh]">
                     {
-                        EXPERIENCE.map((service, index) => (
+                        services.map((service, index) => (
                             <Service 
                                 {...service}
                                 key={index}  
@@ -101,7 +108,8 @@ export default function ServicesSection() {
                                 total={EXPERIENCE.length} 
                                 topHeight={topHeight} 
                                 titleFontSize={titleFontSize} 
-                                titlePadding={titlePadding} 
+                                titlePadding={titlePadding}
+                                showingContentFor={showingContentFor}
                             />
                         ))
                     }

@@ -7,14 +7,9 @@ import { BsArrowRight } from "react-icons/bs";
 import Button from "../Button";
 import Menu from "./Menu";
 
-import { EzemaSocials } from "../../types";
+import { HeaderProps } from "../../types";
 
-
-type Props = {
-    socials?: EzemaSocials[];
-}
-
-export default function Header({ socials }: Props) {
+export default function Header({ socials, showingContentFor }: HeaderProps) {
     const { scrollY } = useScroll();
 
     const showHeader = useRef(false);
@@ -72,7 +67,7 @@ export default function Header({ socials }: Props) {
                     </button>
                 </div>
             </header>             
-            <Menu menuIsOpen={menuIsOpen} closeModal={closeMenu} socials={socials} />
+            <Menu showingContentFor={showingContentFor} menuIsOpen={menuIsOpen} closeModal={closeMenu} socials={socials} />
         </div>
     )
 }

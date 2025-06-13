@@ -1,23 +1,8 @@
-import { IconType } from "react-icons";
+import { useMemo } from "react";
+import { ServiceProps } from "../types";
 
-
-
-type Props = { 
-    index: number; 
-    company?: string;
-    Icon?: IconType;
-    total: number; 
-    subTitle: string; 
-    title: string; 
-    description: string; 
-    subServices: string[]; 
-    topHeight: string;
-    titleFontSize: string;
-    titlePadding: string;
-};
-
-
-export default function Service({ company, Icon, subTitle, index, total, title, description, subServices, topHeight, titleFontSize, titlePadding }: Props) {
+export default function Service({ company, Icon, subTitle, index, total, title, description, subServices, topHeight, titleFontSize, titlePadding, showingContentFor }: ServiceProps) {
+    const showIcon = useMemo(() => showingContentFor === 'frontend', [showingContentFor]);
 
     return (
         <>
@@ -60,8 +45,11 @@ export default function Service({ company, Icon, subTitle, index, total, title, 
                 className="flex bg-dark items-center font-medium font-ov-soge"
             >
                 <span className="h-[1rem] mb-2 lg:h-[1.78rem] flex items-center w-20 font-poppins text-base lg:text-xl pl-4 md:pl-0">
-                    {Icon ? <Icon size={40} className="opacity-30" /> : null}
-                    {/* <span>{index > 10 ? index + 1 : `0${index+1}`}.</span> */}
+                    {
+                        showIcon && Icon ? 
+                            <Icon size={40} className="opacity-30" /> : 
+                            <span>{index > 10 ? index + 1 : `0${index+1}`}.</span>
+                    }
                 </span>
                 <h3 className="">{title}</h3>
             </div>
