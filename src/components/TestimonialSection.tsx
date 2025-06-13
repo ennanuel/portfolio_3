@@ -3,13 +3,15 @@ import { useMemo, useState } from "react";
 
 import { Title } from "./Title";
 import SubTitle from "./SubTitle";
-
 import Testimonial from "./Testimonial";
-import { EzemaTestimonials } from "../types";
 
-export default function TestimonialSection({ testimonials }: { testimonials?: EzemaTestimonials[] }) {
+import { TestimonialsSectionProps } from "../types";
+
+export default function TestimonialSection({ testimonials, showingContentFor }: TestimonialsSectionProps) {
     const [index, setIndex] = useState(0);
     const testimonial = useMemo(() => testimonials && testimonials[index], [index]);
+
+    if(showingContentFor === 'frontend') return;
 
     return (
         <section id="testimonials" className="relative z-[6] mt-[-200px] min-h-screen bg-light flex flex-col md:gap-10 pt-20 pb-[160px]">
