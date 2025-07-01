@@ -35,8 +35,10 @@ export default function App() {
     }, []);
     
     useEffect(()=>{
+        const avoidVisitor = searchParams.get('omit') === 'true';
+
         initializeCalApi();
-        saveVisitorToDB();
+        saveVisitorToDB(avoidVisitor);
     }, []);
 
     if(loading) return <Loading />
