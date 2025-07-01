@@ -1,7 +1,7 @@
 
 import { Client, Databases, ID } from "appwrite";
 import { getCalApi } from "@calcom/embed-react";
-import { COLLECTION_ID, DATABASE_ID, PROJECT_ID } from "../assets/constants";
+import { COLLECTION_ID, DATABASE_ID, ENDPOINT_URL, IP_URL, PROJECT_ID } from "../assets/constants";
 
 type Payload = {
   [key: string]: string;
@@ -9,7 +9,7 @@ type Payload = {
 
 async function getIpAddress() {
     try {
-        const response = await fetch("https://ipinfo.io/json");
+        const response = await fetch(IP_URL);
         const data = await response.json();
 
         return data.ip;
@@ -22,7 +22,7 @@ const saveToDB = (payload: Payload, collectionId: string) => new Promise(async (
     try {
         const client = new Client();
         client
-            .setEndpoint('https://fra.cloud.appwrite.io/v1')
+            .setEndpoint(ENDPOINT_URL)
             .setProject(PROJECT_ID);
 
         const database = new Databases(client);
@@ -39,19 +39,26 @@ const saveToDB = (payload: Payload, collectionId: string) => new Promise(async (
     }
 });
 
-export async function saveVisitorToDB() {
-    try {
-        const location = await getIpAddress();
-        const payload = {
-            location,
-            url: window.location.href,
-            platform: "Portfolio",
-            userAgent: navigator.userAgent
-        };
+export async function saveVisitorToDB(avoidVisitor: boolean) {
+    const skipRecordingVistor = avoidVisitor || Date.now() <= Number(localStorage.getItem('omit'));
 
-        saveToDB(payload, COLLECTION_ID);
-    } catch (error) {
-        console.error('Could not send request');
+    if(skipRecordingVistor) {
+        const nextThreeDays = Date.now() + 259200000;
+        localStorage.setItem('omit', String(nextThreeDays));
+    } else {
+        try {
+            const location = await getIpAddress();
+            const payload = {
+                location,
+                url: window.location.href,
+                platform: "Portfolio",
+                userAgent: navigator.userAgent
+            };
+
+            saveToDB(payload, COLLECTION_ID);
+        } catch (error) {
+            console.error('Could not send request');
+        }
     }
 };
 
